@@ -1,8 +1,8 @@
 # HW1: Basic MLLM Implementation
 
 ## Task 1: Image Captioning Evaluation
-## Task 2-1: MLLM Image Style Transfer(Text-to-image)
-## Task 2-2: MLLM Image Style Transfer(Text-to-image)
+## Task 2-1: MLLM Image Style Transfer (Text-to-image)
+## Task 2-2: MLLM Image Style Transfer (Image-to-image)
 
 
 ---
