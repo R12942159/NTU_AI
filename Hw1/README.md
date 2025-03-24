@@ -18,13 +18,13 @@
 
 ---
 ## Usage
-- **To run Part 1, use the following command:** <br>
+- **To run Task 1, use the following command:** <br>
     python3 Task1.py
 
-- **To run Part 2-1, use the following command:** <br>
+- **To run Task 2-1, use the following command:** <br>
     python3 Task2.py
 
-- **To run Part 2-2, use the following command:** <br>
+- **To run Task 2-2, use the following command:** <br>
     python3 Task3.py
 
 ---
