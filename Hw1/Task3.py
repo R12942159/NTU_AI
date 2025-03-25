@@ -94,15 +94,15 @@ def read_prompts(prompt_path):
 
     return prompts['prompts']
 
-def resize_image(image):
+def resize_image(image, img_size=224):
     transform = transforms.Compose([
-        transforms.Resize((224, 224)),
+        transforms.Resize((img_size, img_size)),
         transforms.ToTensor()
     ])
     return transform(image).permute(1, 2, 0).mul(255).byte().numpy()
 
 def generate_stylized_images(pipe, prompt, image, strength=0.75, guidance_scale=7.5, seed=41):
-    image = Image.fromarray(resize_image(image))
+    image = Image.fromarray(resize_image(image, 512))
     image = pipe(
         prompt=prompt, 
         image=image, 
@@ -110,6 +110,7 @@ def generate_stylized_images(pipe, prompt, image, strength=0.75, guidance_scale=
         guidance_scale=guidance_scale, 
         generator=torch.manual_seed(seed),
     ).images[0]
+    image = Image.fromarray(resize_image(image, 224))
     
     return image
 
