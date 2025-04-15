@@ -1,3 +1,4 @@
+import os
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -8,19 +9,37 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
-LLM_MODEL = ""
-EMBEDDINGS = ""
+LLM_MODEL = "microsoft/phi-2"
+EMBEDDINGS = "sentence-transformers/all-MiniLM-L6-v2"
 
-QUERY = "Who is XXX?"
-CV_FILE = ""
-DB_PATH = ""
+QUERY = "Who is Liang-Ming Chiu?"
+CV_FILE = "./CV-Chinese.pdf"
+DB_PATH = "./chroma_cv"
 
 # ========== Step 1: build LLM ==========
-tokenizer = # AutoTokenizer ... 
-model = # AutoModelForCausalLM ...
+cache_dir = os.path.expanduser("~/data_18TB/")  # 指定模型緩存目錄
 
-pipe = # pipeline ...
-llm = # HuggingFacePipeline ... 
+# 加載 tokenizer 並指定 cache_dir
+tokenizer = AutoTokenizer.from_pretrained(LLM_MODEL, cache_dir=cache_dir)
+model = AutoModelForCausalLM.from_pretrained(
+    LLM_MODEL,
+    torch_dtype="auto",
+    device_map="auto",
+    cache_dir=cache_dir,
+)
+
+pipe = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    temperature=0.7,
+    top_p=0.95,
+    repetition_penalty=1.15,
+    pad_token_id=tokenizer.eos_token_id,
+    truncation=True,
+    do_sample=True,
+)
+llm = HuggingFacePipeline(pipeline=pipe)
 
 def wo_RAG():
     print("\n🧪 [只用 LLM 回答]：")
@@ -29,15 +48,25 @@ def wo_RAG():
 
 def w_RAG():
     # ========== Step 2: build knowledge ==========
-    loader = PyPDFLoader(CV_FILE)
-    pages = loader.load_and_split()
+    if os.path.exists(DB_PATH):
+        vectordb = Chroma(
+            persist_directory=DB_PATH,
+            embedding_function=embedding
+        )
+    else:
+        loader = PyPDFLoader(CV_FILE)
+        pages = loader.load_and_split()
 
-    splitter = # RecursiveCharacterTextSplitter ...
-    docs = splitter.split_documents(pages)
+        splitter = RecursiveCharacterTextSplitter(
+            chunk_size=500,      # size of each text chunk
+            chunk_overlap=50,    # overlap between chunks
+        )
+        docs = splitter.split_documents(pages)
 
-    embedding = # HuggingFaceEmbeddings ...
-    vectordb = # Chroma.from_documents ...
-    retriever = # vectordb.as_retriever ...
+        embedding = HuggingFaceEmbeddings(model_name=EMBEDDINGS)
+        vectordb = Chroma.from_documents(documents=docs, embedding=embedding)
+        vectordb.persist()
+    retriever = vectordb.as_retriever()
 
     # ========== Step 3: build RAG chain ==========
     system_prompt = (
@@ -53,8 +82,8 @@ def w_RAG():
         ]
     )
 
-    question_answer_chain =  # use prompt and llm to build qa chain
-    chain = # build a retrieval chain
+    question_answer_chain = create_stuff_documents_chain(llm=llm, prompt=prompt)
+    chain = create_retrieval_chain(retriever=retriever, combine_docs_chain=question_answer_chain)
     result = chain.invoke({"input": QUERY})
 
     print("\n🧠 [使用 RAG 回答]：")
@@ -62,7 +91,5 @@ def w_RAG():
 
 
 if __name__ == '__main__':
-    # without RAG
     wo_RAG()
-    # with RAG
     w_RAG()
