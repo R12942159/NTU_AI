@@ -16,4 +16,7 @@
 
 - #### Task 2-2: MLLM Image Style Transfer (Image-to-image)
 
-### HW2: XXX
+### HW2: Retrieval-Augmented Generation (RAG)
+- #### Task 1: Retrieval-Augmented Generation (RAG) Implementation
+
+- #### Task 2: RAG-based Page Retrieval
