@@ -13,7 +13,7 @@ LLM_MODEL = "microsoft/phi-2"
 EMBEDDINGS = "sentence-transformers/all-MiniLM-L6-v2"
 
 QUERY = "Who is Liang-Ming Chiu?"
-CV_FILE = "./CV-Chinese.pdf"
+CV_FILE = "./CV-English.pdf"
 DB_PATH = "./chroma_cv"
 
 # ========== Step 1: build LLM ==========
@@ -33,8 +33,9 @@ pipe = pipeline(
     model=model,
     tokenizer=tokenizer,
     temperature=0.7,
-    top_p=0.95,
+    top_p=0.85,
     repetition_penalty=1.15,
+    max_new_tokens=256,
     pad_token_id=tokenizer.eos_token_id,
     truncation=True,
     do_sample=True,
@@ -65,22 +66,27 @@ def w_RAG():
 
         embedding = HuggingFaceEmbeddings(model_name=EMBEDDINGS)
         vectordb = Chroma.from_documents(documents=docs, embedding=embedding)
-        vectordb.persist()
-    retriever = vectordb.as_retriever()
+        vectordb.persist()  
 
-    # ========== Step 3: build RAG chain ==========
+    retriever = vectordb.as_retriever()
+    # system_prompt = (
+    #     "Use the given context to answer the question. "
+    #     "If you don't know the answer, say you don't know. "
+    #     "Use three sentences maximum and keep the answer concise. "
+    #     "Context: {context}"
+    # )
     system_prompt = (
-        "Use the given context to answer the question. "
-        "If you don't know the answer, say you don't know. "
-        "Use three sentence maximum and keep the answer concise. "
+        "Use the provided context to answer the question as accurately as possible. "
+        "If the answer is not clear, respond with 'I don't know.' "
+        "Please keep your response concise, with a maximum of three sentences, focusing on the most relevant details. "
         "Context: {context}"
     )
-    prompt = ChatPromptTemplate.from_messages(
-        [
-            ("system", system_prompt),
-            ("human", "{input}"),
-        ]
-    )
+
+
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        ("human", "{input}")
+    ])
 
     question_answer_chain = create_stuff_documents_chain(llm=llm, prompt=prompt)
     chain = create_retrieval_chain(retriever=retriever, combine_docs_chain=question_answer_chain)
