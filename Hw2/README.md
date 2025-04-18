@@ -6,15 +6,20 @@
 
 ---
 ## Requirements
+- python==3.13.2
+- langchain==0.3.23
+- langchain_community==0.3.21 
+- pypdf==5.4.0 
+- chromadb==1.0.4
 
 
 ---
 ## Usage
 - **To run Task 1, use the following command:** <br>
-    python3 Task1.py
+    python3 task1.py
 
 - **To run Task 2, use the following command:** <br>
-    python3 Task2.py
+    python3 task2.py
 
 ---
 ## Submission
