@@ -1,0 +1,1854 @@
+[
+  {
+    "page_label": "1",
+    "caption": "Lecture title: 'Artificial Intelligence' presented by Wen-Huang Cheng from National Taiwan University. The slide includes the lecturer's contact information: wenhuang@csie.ntu.edu.tw."
+  },
+  {
+    "page_label": "2",
+    "caption": "The slide simply reads 'AI Weekly', likely serving as a header or transition into a new section, with no detailed content provided."
+  },
+  {
+    "page_label": "3",
+    "caption": "Introduction to Agent Robotics referencing a CVPR 2024 tutorial by Katsushi Ikeuchi. The topic is likely related to generalist agents that combine robotics and AI functionalities.\nSource: https://multimodalagentai.github.io/files/KatsushiIkeuchi_Talk3_CVPR2024_Tutorial_GeneralistAgentAI.pdf"
+  },
+  {
+    "page_label": "4",
+    "caption": "Basic principles of deep reinforcement learning are introduced. This includes the agent-environment interaction loop, where an agent learns optimal behaviors through trial and error based on received rewards."
+  },
+  {
+    "page_label": "5",
+    "caption": "This slide appears to be blank or used as a visual spacer—no content provided."
+  },
+  {
+    "page_label": "6",
+    "caption": "Lecture agenda outlining major topics: Preliminaries, Generative Models, Transformers, Diffusion Models, Multimodal Embedding Spaces, and AI Agent Basics (Acting, Tool Use, Memory)."
+  },
+  {
+    "page_label": "7",
+    "caption": "Repeated agenda slide identical to page 6. Emphasizes the course structure involving generative AI components and agent capabilities."
+  },
+  {
+    "page_label": "8",
+    "caption": "Explanation of the Sequence-to-Sequence generation paradigm using Transformer-based models. The input sequence (x1, ..., xT) is first processed by an encoder to create a context vector. This vector is then passed to a decoder which generates an output sequence (y1, ..., yT’). The figure illustrates how encoder-decoder architecture handles input-output pairs.\nSource: https://huggingface.co/blog/encoder-decoder"
+  },
+  {
+    "page_label": "9",
+    "caption": "Transformer-based models use the encoder-decoder architecture with attention mechanisms that allow the model to selectively focus on important parts of the input sequence while generating the output.\nSource: https://huggingface.co/blog/encoder-decoder"
+  },
+  {
+    "page_label": "10",
+    "caption": "An example of language translation using Transformers. Demonstrates autoregressive generation where the model predicts one token at a time based on previously generated tokens.\nSource: https://huggingface.co/blog/encoder-decoder"
+  },
+  {
+    "page_label": "11",
+    "caption": "An example of using Transformers for language translation. The slide illustrates how Transformers utilize an autoregressive approach for output generation, predicting one token at a time based on previous outputs.\nSource: https://huggingface.co/blog/encoder-decoder"
+  },
+  {
+    "page_label": "12",
+    "caption": "Further explanation of autoregressive generation in Transformer-based language translation. It highlights that during inference, the model is repeatedly called with its own generated outputs as input.\nSource: https://huggingface.co/blog/encoder-decoder"
+  },
+  {
+    "page_label": "13",
+    "caption": "Image Captioning using Transformers: The task involves describing an image in natural language. This page introduces the application and architecture for generating captions from visual inputs.\nSource: https://eman-lotfy-elrefai.medium.com/5-models-to-use-for-image-captioning-task-59143fb2df6d"
+  },
+  {
+    "page_label": "14",
+    "caption": "Illustration of image captioning using a Transformer-based architecture. The input image is divided into patches and encoded into a sequence of embeddings via a Transformer encoder. These encoded features are then used by a Transformer decoder to generate a sequence of words that describe the image. The decoder autoregressively predicts tokens, starting from a special [START] token and ending with an [END] token, producing captions like 'person wearing hat'.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "15",
+    "caption": "Description of the Transformer encoder block architecture (1/5). Emphasizes that it consists of N repeated encoder blocks that process input sequences through attention and feed-forward layers.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "16",
+    "caption": "Transformer Encoder Block (2/5): Begins to explore the internal structure of a single encoder block in detail. Each block includes components like multi-head attention and normalization layers.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "17",
+    "caption": "Transformer Encoder Block (3/5): Introduces the use of positional encoding to capture order information in sequences. This is essential because self-attention itself is permutation-invariant.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "18",
+    "caption": "Positional Encoding introduction: Drawn from the original 'Attention is All You Need' paper. Positional encodings are added to input embeddings to retain the sequence order.\nSource: “Attention is all you need,” NeurIPS, 2017."
+  },
+  {
+    "page_label": "19",
+    "caption": "Explains the desiderata (requirements) for a good positional encoding method. These include uniqueness per time step, consistency across sentence lengths, bounded values, and determinism.\nSource: “Attention is all you need,” NeurIPS, 2017."
+  },
+  {
+    "page_label": "20",
+    "caption": "Continuation on positional encoding desiderata and introduces implementation options such as learned lookup tables or fixed functions that satisfy key properties.\nSource: “Attention is all you need,” NeurIPS, 2017."
+  },
+  {
+    "page_label": "21",
+    "caption": "Continues with options for positional encoding. Lists two main approaches: 1) learnable lookup tables, and 2) fixed functions designed to satisfy required properties.\nSource: “Attention is all you need,” NeurIPS, 2017."
+  },
+  {
+    "page_label": "22",
+    "caption": "Visual representation of positional encodings across different dimensions. The diagram shows how sinusoidal patterns vary across position indices and frequency components.\nSource: https://erdem.pl/2021/05/understanding-positional-encoding-in-transformers"
+  },
+  {
+    "page_label": "23",
+    "caption": "Transformer Encoder Block (4/5): Highlights how attention attends over all vectors and how positional encoding is added to the input embeddings before self-attention.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "24",
+    "caption": "Introduction to the Self-Attention Layer. Inputs are a set of vectors (shape: N x D), and the outputs are context vectors of the same shape after attending to relevant positions.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "25",
+    "caption": "Describes how query vectors (q) are derived from input vectors using weight matrices. Forms the foundation for attention computation in Transformer models.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "26",
+    "caption": "Full attention computation steps are shown: deriving query (q), key (k), and value (v) vectors, computing alignment scores, applying softmax to obtain weights, and producing context vectors.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "27",
+    "caption": "Clarifies that self-attention is permutation equivariant, i.e., input order does not affect output unless positional encoding is included. Reinforces why position information is essential.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "28",
+    "caption": "Multi-Head Self-Attention is introduced. Multiple attention heads run in parallel to capture diverse patterns. Each head performs independent attention before concatenation.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "29",
+    "caption": "Transformer Encoder Block (5/5): Final step includes attention over all vectors, positional encoding, and a feedforward layer (MLP). Output embeddings are produced per input token.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "30",
+    "caption": "The Transformer Decoder Block (1): Introduces the decoder architecture, which is composed of N stacked decoder blocks. Each block uses masked self-attention and encoder-decoder attention.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "31",
+    "caption": "Transformer Decoder Block (2): Begins explanation of the internal structure of a decoder block. This block mirrors the encoder but includes masked attention for autoregressive generation.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "32",
+    "caption": "Transformer Decoder Block (3): Explains that the decoder is similar to the encoder but includes masked self-attention to restrict attention to past tokens only.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "33",
+    "caption": "Masked Self-Attention: Prevents the model from attending to future tokens during training or generation by masking alignment scores.\nSource: “Attention is All You Need,” NIPS, 2017."
+  },
+  {
+    "page_label": "34",
+    "caption": "Further explains masking logic in self-attention. Future token positions are assigned negative infinity in alignment scores to prevent the model from peeking ahead.\nSource: “Attention is All You Need,” NIPS, 2017."
+  },
+  {
+    "page_label": "35",
+    "caption": "Decoder attention block performs multi-head attention over encoder outputs. This is the mechanism by which image features or text context are injected into decoder layers for generation.\nSource: https://cs231n.stanford.edu/slides/2022/lecture_11_ruohan.pdf"
+  },
+  {
+    "page_label": "36",
+    "caption": "Slide repeats the agenda: Preliminaries, Generative Models, Transformers, Diffusion Models, Multimodal Embedding Spaces, AI Agent Basics (Acting, Tool Use, Memory)."
+  },
+  {
+    "page_label": "37",
+    "caption": "Text-to-Image Generation using Diffusion-Based Models: Introduces the use of DALL·E 2 and CLIP latents to generate realistic images from text inputs.\nSource: “Hierarchical Text-Conditional Image Generation with CLIP Latents,” arXiv, 2022."
+  },
+  {
+    "page_label": "38",
+    "caption": "Diffusion Process explained: Inspired by non-equilibrium thermodynamics. Describes how particle motion resembles noise that is hard to distinguish in short timescales.\nSource: https://sgvr.kaist.ac.kr/~sungeui/CG/Slides/slides_24/CS380_Talk3_Diffusion.pdf"
+  },
+  {
+    "page_label": "39",
+    "caption": "Further diffusion process insight: The short-term behavior of molecular motion is Gaussian-distributed, making it hard to tell forward from backward motion.\nSource: https://sgvr.kaist.ac.kr/~sungeui/CG/Slides/slides_24/CS380_Talk3_Diffusion.pdf"
+  },
+  {
+    "page_label": "40",
+    "caption": "Relates the concept of noise to pixel values in an image. A Gaussian-distributed noise is added to image pixels to simulate the forward diffusion process.\nSource: https://sgvr.kaist.ac.kr/~sungeui/CG/Slides/slides_24/CS380_Talk3_Diffusion.pdf"
+  },
+  {
+    "page_label": "41",
+    "caption": "Denoising Diffusion Models: Introduces the two-phase process. The forward process gradually adds noise to input data, while the reverse process trains a model to recover the original data by removing noise.\nSource: https://sgvr.kaist.ac.kr/~sungeui/CG/Slides/slides_24/CS380_Talk3_Diffusion.pdf"
+  },
+  {
+    "page_label": "42",
+    "caption": "Sampling process is explained in denoising diffusion models. Highlights the concept of unconditional generation where the model learns to sample data from pure noise.\nSource: https://sgvr.kaist.ac.kr/~sungeui/CG/Slides/slides_24/CS380_Talk3_Diffusion.pdf"
+  },
+  {
+    "page_label": "43",
+    "caption": "Slide visualizes the sampling procedure during the denoising process, illustrating how noise is iteratively removed to generate final outputs such as images.\nSource: https://sgvr.kaist.ac.kr/~sungeui/CG/Slides/slides_24/CS380_Talk3_Diffusion.pdf"
+  },
+  {
+    "page_label": "44",
+    "caption": "Forward diffusion process: Demonstrates how small Gaussian noise is incrementally added over T steps, leading to increasingly noisy samples. Plots show noise growth over time.\nSource: https://lilianweng.github.io/posts/2021-07-11-diffusion-models/"
+  },
+  {
+    "page_label": "45",
+    "caption": "Reverse denoising process: Since direct estimation of q(xt-1|xt) is intractable, neural networks are used to approximate the reverse diffusion step and learn to reconstruct the data.\nSource: https://lilianweng.github.io/posts/2021-07-11-diffusion-models/"
+  },
+  {
+    "page_label": "46",
+    "caption": "Text-to-Image generation using diffusion models is shown in a conditional setting. Given a text prompt, the model progressively denoises a latent image until it matches the input description.\nSource: https://sgvr.kaist.ac.kr/~sungeui/CG/Slides/slides_24/CS380_Talk3_Diffusion.pdf"
+  },
+  {
+    "page_label": "47",
+    "caption": "Example: Stable Diffusion. This model applies latent diffusion with high-resolution synthesis capabilities, transforming text prompts into photorealistic images.\nSource: “High-Resolution Image Synthesis with Latent Diffusion Models,” CVPR, 2022."
+  },
+  {
+    "page_label": "48",
+    "caption": "Slide repeats the lecture agenda, preparing for the next topic on multimodal embedding spaces. Key sections include generative models, diffusion models, and AI agent basics."
+  },
+  {
+    "page_label": "49",
+    "caption": "Multimodal Embedding Spaces: Introduces joint learning from paired image-text datasets. Separate encoders for each modality are trained using contrastive objectives to align representations."
+  },
+  {
+    "page_label": "50",
+    "caption": "Multimodal learning is explained in the context of MLLMs. Text and image encoders are trained to project inputs into a shared representation space so that they 'speak the same language.'"
+  },
+  {
+    "page_label": "51",
+    "caption": "Multimodal learning enables generalization across any-to-any modalities, such as combining vision, text, and audio inputs. This is exemplified by models like 4M-21.\nSource: “4M-21: An Any-to-Any Vision Model for Tens of Tasks and Modalities,” NeurIPS, 2024."
+  },
+  {
+    "page_label": "52",
+    "caption": "Open-web datasets used to train vision-language models (like LAION) have significant issues. Captions are often scraped from alt tags and fail to represent the full image semantics.\nSource: “A Picture is Worth a Thousand Words,” arXiv, 2023."
+  },
+  {
+    "page_label": "53",
+    "caption": "Examples of poor-quality alt text are shown, illustrating the limitations of using web-scraped data for vision-language pretraining."
+  },
+  {
+    "page_label": "54",
+    "caption": "Continues examples of incomplete or misleading alt text from open datasets, further emphasizing the need for better captioning practices."
+  },
+  {
+    "page_label": "55",
+    "caption": "The RECAP Framework proposes relabeling existing image-text datasets using an I2T (Image-to-Text) model to improve caption quality and model learning efficiency."
+  },
+  {
+    "page_label": "56",
+    "caption": "Examples of enhanced captions generated by the RECAP framework, showing more accurate and comprehensive descriptions of visual content."
+  },
+  {
+    "page_label": "57",
+    "caption": "Additional RECAP examples compare human-written and AI-generated captions, illustrating improvements in clarity and detail."
+  },
+  {
+    "page_label": "58",
+    "caption": "Continues caption comparisons under the RECAP framework, showcasing improved image-text alignment and semantic richness."
+  },
+  {
+    "page_label": "59",
+    "caption": "Quantitative results demonstrating the effectiveness of RECAP in improving vision-language model performance across several benchmarks."
+  },
+  {
+    "page_label": "60",
+    "caption": "More performance results showing how better captions enhance model comprehension and sample efficiency."
+  },
+  {
+    "page_label": "61",
+    "caption": "Lecture agenda slide marking transition to the next major topic: AI Agent Basics, including Acting, Tool Use, and Memory."
+  },
+  {
+    "page_label": "62",
+    "caption": "MLLMs as Agent Models – Level 1 and Level 2 are introduced: Level 1 uses MLLMs to act, while Level 2 uses MLLMs to reason and act.\nSource: https://rdi.berkeley.edu/llm-agents/f24"
+  },
+  {
+    "page_label": "63",
+    "caption": "Agent architecture slide shows the hierarchical use of MLLMs in acting, reasoning, and memory, setting the stage for deeper discussions.\nSource: https://rdi.berkeley.edu/llm-agents/f24"
+  },
+  {
+    "page_label": "64",
+    "caption": "MLLMs predict model-specific tokens while AI agents predict observation-action sequences. Introduces the concepts of policy and world models in agent settings."
+  },
+  {
+    "page_label": "65",
+    "caption": "Example from NeurIPS 2022: Model-Based Imitation Learning for Urban Driving. The model predicts driving trajectories in imagination mode, highlighted by sepia-tone vision."
+  },
+  {
+    "page_label": "66",
+    "caption": "Expands on policy and world models for MLLM agents. Emphasizes the importance of tokenizing observations and actions for agent-level behavior modeling."
+  },
+  {
+    "page_label": "67",
+    "caption": "Example: RT-2 model from PLMR 2023, showcasing robotic control via vision-language-action modeling."
+  },
+  {
+    "page_label": "68",
+    "caption": "Another RT-2 example continuing the demonstration of transferring web knowledge to robotic decision making."
+  },
+  {
+    "page_label": "69",
+    "caption": "Continues RT-2 demonstration, highlighting its ability to map visual observations and text to robotic actions in real-world scenarios."
+  },
+  {
+    "page_label": "70",
+    "caption": "Recaps MLLM agent architecture and introduces the concept of tool use and memory as key agent capabilities.\nSource: https://rdi.berkeley.edu/llm-agents/f24"
+  },
+  {
+    "page_label": "71",
+    "caption": "MLLMs can invoke external tools like calculators, APIs, and search engines via special tokens, enabling them to perform complex tasks.\nSource: “TALM: Tool Augmented Language Models,” arXiv, 2022."
+  },
+  {
+    "page_label": "72",
+    "caption": "Example of Toolformer from NeurIPS 2023: LLMs learn when and how to use tools by evaluating whether tool use improves prediction quality.\nSource: “Toolformer: Language Models Can Teach Themselves to Use Tools,” NeurIPS, 2023."
+  },
+  {
+    "page_label": "73",
+    "caption": "Shows the pipeline of Toolformer: sample API calls, execute them, filter for loss improvement, and integrate them with original input text.\nSource: “Toolformer,” NeurIPS, 2023."
+  },
+  {
+    "page_label": "74",
+    "caption": "Examples of predictions made by Toolformer after augmenting the input with effective tool calls, showcasing improved task-specific performance."
+  },
+  {
+    "page_label": "75",
+    "caption": "Agent architecture slide summarizing how acting, reasoning, tool use, and memory are integrated into MLLM-based agents.\nSource: https://rdi.berkeley.edu/llm-agents/f24"
+  },
+  {
+    "page_label": "76",
+    "caption": "Memory in agents: Highlights its limitations (e.g., limited context) and potential (storing long-term experience and skills for continual learning)."
+  },
+  {
+    "page_label": "77",
+    "caption": "Explains how humans use self-reflection to turn experiences into long-term memory, and how similar mechanisms could be designed for agents."
+  },
+  {
+    "page_label": "78",
+    "caption": "Challenges in agent self-reflection: Requires recognizing failure points and generating actionable insights to improve over time."
+  },
+  {
+    "page_label": "79",
+    "caption": "Reflexion framework: Combines Actor, Evaluator, and Self-Reflection model to provide verbal feedback for iterative learning.\nSource: “Reflexion: Language Agents with Verbal Reinforcement Learning,” NeurIPS, 2023."
+  },
+  {
+    "page_label": "80",
+    "caption": "The Reflexion process: Feedback generated from environment interaction is stored in agent memory, helping future decisions.\nSource: “Reflexion,” NeurIPS, 2023."
+  },
+  {
+    "page_label": "81",
+    "caption": "Illustrates how the Reflexion framework loops over actor-environment interactions to iteratively improve agent performance through verbal reinforcement."
+  },
+  {
+    "page_label": "82",
+    "caption": "ALFWorld is introduced as a simulator for learning abstract, text-based action policies. It supports reinforcement learning agents.\nSource: https://alfworld.github.io/"
+  },
+  {
+    "page_label": "83",
+    "caption": "Example task from ALFWorld: 'Examine the mug with the desklamp' – illustrates a complex multi-step reasoning and decision-making process."
+  },
+  {
+    "page_label": "84",
+    "caption": "Visual breakdown of ALFWorld reasoning process (1/4): Shows how the agent begins to reason step-by-step through the environment."
+  },
+  {
+    "page_label": "85",
+    "caption": "Continuation of ALFWorld example. The agent refines its reasoning trace to successfully execute a sequence of actions and solve the task."
+  },
+  {
+    "page_label": "86",
+    "caption": "Experiment results: Shows how self-evaluation techniques like GPT and heuristic reflection increase task completion success in ALFWorld."
+  },
+  {
+    "page_label": "87",
+    "caption": "Voyager [TMLR 2024]: An embodied agent with a skill library and auto-curriculum system. Uses LLMs to incrementally develop new skills.\nSource: “Voyager,” TMLR, 2024."
+  },
+  {
+    "page_label": "88",
+    "caption": "Continues Voyager system description. Highlights how procedural memory stores previously acquired skills and builds on them."
+  },
+  {
+    "page_label": "89",
+    "caption": "Voyager running example (1/4): Demonstrates how the system performs a task using past skills and newly acquired knowledge."
+  },
+  {
+    "page_label": "90",
+    "caption": "Voyager running example (2/4): Further illustrates the skill chaining process through multiple rounds of task solving and reflection."
+  },
+  {
+    "page_label": "91",
+    "caption": "Voyager running example (3/4): Shows how new capabilities are encoded and generalized to similar tasks."
+  },
+  {
+    "page_label": "92",
+    "caption": "Voyager running example (4/4): Final integration into the skill library for future reuse and memory-based generalization."
+  },
+  {
+    "page_label": "93",
+    "caption": "System prompt design for automatic curriculum generation in Voyager. A structured prompt guides task selection and complexity."
+  },
+  {
+    "page_label": "94",
+    "caption": "Continued system prompt example for Voyager curriculum design, showing how tasks are incrementally structured."
+  },
+  {
+    "page_label": "95",
+    "caption": "Final system prompt example for Voyager. The curriculum includes reasoning steps and contextual knowledge to scaffold learning."
+  },
+  {
+    "page_label": "96",
+    "caption": "Sample tasks from Voyager’s auto-curriculum. Tasks are diverse and tailored to challenge the agent's evolving skill set."
+  },
+  {
+    "page_label": "97",
+    "caption": "Sample Skill Library: Demonstrates how learned skills are stored, retrieved, and refined for reuse in future scenarios."
+  },
+  {
+    "page_label": "98",
+    "caption": "Examples of self-verification: Shows how the agent checks its own reasoning trace and corrects mistakes by comparing against previous experience."
+  },
+  {
+    "page_label": "99",
+    "caption": "Stanford AI Village (UIST 2023): Introduces an environment simulating human-like behavior using episodic memory.\nSource: “Generative Agents,” UIST, 2023."
+  },
+  {
+    "page_label": "100",
+    "caption": "Architecture of the Stanford AI Village agent: Uses memory streams to condition responses and simulate long-term reasoning and social interaction.\nSource: “Generative Agents,” UIST, 2023."
+  },
+  {
+    "page_label": "101",
+    "caption": "Various reasoning benchmarks are emerging: MMStar (NeurIPS 2024) is introduced as a new benchmark for evaluating multimodal reasoning capabilities."
+  },
+  {
+    "page_label": "102",
+    "caption": "MMBench (ECCV 2024) is introduced with a focus on coarse perception tasks. Evaluates vision-language understanding at a broad level."
+  },
+  {
+    "page_label": "103",
+    "caption": "MMBench benchmark example continues with fine-grained perception at the single-instance level. This measures how well models capture detailed semantics within an individual image."
+  },
+  {
+    "page_label": "104",
+    "caption": "MMBench expands to fine-grained cross-instance perception. This evaluates the ability to compare and contrast information across different instances."
+  },
+  {
+    "page_label": "105",
+    "caption": "MMBench includes attribute reasoning, assessing the model’s ability to infer and reason over object attributes such as color, shape, and material."
+  },
+  {
+    "page_label": "106",
+    "caption": "MMBench also evaluates relation reasoning, where models must identify spatial or functional relationships between entities in visual scenes."
+  },
+  {
+    "page_label": "107",
+    "caption": "Logic reasoning in MMBench is introduced as one of the highest levels of difficulty, requiring models to follow logical chains of deduction from multimodal inputs."
+  },
+  {
+    "page_label": "108",
+    "caption": "MMVet (ICML 2024) benchmark is introduced for vetting model robustness in vision-language tasks with variable complexity and multiple choice options."
+  },
+  {
+    "page_label": "109",
+    "caption": "MathVista (ICLR 2024) is introduced as a reasoning benchmark for multimodal mathematical problem solving, including graph and chart interpretation."
+  },
+  {
+    "page_label": "110",
+    "caption": "HallusionBench (CVPR 2024) is introduced to test how well vision-language models handle hallucinations—ensuring grounded and factual answers."
+  },
+  {
+    "page_label": "111",
+    "caption": "Final remarks: Reasoning is a key pillar of intelligence, requiring logical and contextual understanding. Ongoing research focuses on improving MLLM architecture, efficiency, long-context support, instruction tuning, and reinforcement learning for multimodal tasks."
+  },
+  {
+    "page_label": "112",
+    "caption": "Lecture begins on Learning to Act. Title slide with speaker information: Wen-Huang Cheng, National Taiwan University, wenhuang@csie.ntu.edu.tw."
+  },
+  {
+    "page_label": "113",
+    "caption": "Title: AI Weekly – opening slide for the new lecture segment, possibly signaling the start of a reinforcement learning section."
+  },
+  {
+    "page_label": "114",
+    "caption": "Another 'AI Weekly' title slide — serves as a visual transition or placeholder."
+  },
+  {
+    "page_label": "115",
+    "caption": "Another slide with 'AI Weekly' title — repeated stylistic slide, likely for pacing or modular breakdown of content."
+  },
+  {
+    "page_label": "116",
+    "caption": "CVPR 2025 (Rating: 555) – This slide appears to be a humorous or informal reference, possibly highlighting a noteworthy paper or meta-commentary on reviewing standards."
+  },
+  {
+    "page_label": "117",
+    "caption": "Dataset Distillation: Introduces the concept of condensing large datasets into smaller synthetic datasets, retaining learning capacity with less memory and time."
+  },
+  {
+    "page_label": "118",
+    "caption": "Performance results from dataset distillation paper: 20.5% accuracy boost, 300× GPU memory savings, and 20× speed-up. Achieved CIFAR-100 compression using just 2.3 GB on a single 2080 Ti."
+  },
+  {
+    "page_label": "119",
+    "caption": "Continuation of achieved results from dataset distillation. Demonstrates scalability and efficiency compared to existing state-of-the-art."
+  },
+  {
+    "page_label": "120",
+    "caption": "Distribution Matching (DM) methods are introduced as a key mechanism for aligning real and synthetic data distributions. MSE is one early approach used for point-wise feature comparison."
+  },
+  {
+    "page_label": "121",
+    "caption": "Critique of MSE in DM: While simple, it fails to capture semantic structures due to its reliance on Euclidean distances in raw feature space."
+  },
+  {
+    "page_label": "122",
+    "caption": "Moment matching methods like Maximum Mean Discrepancy (MMD) are introduced. These align distributions in a latent Hilbert space rather than pixel-wise."
+  },
+  {
+    "page_label": "123",
+    "caption": "Limitations of MMD: While moment alignment is useful, it doesn’t guarantee full distribution alignment. Additional structures may be missed."
+  },
+  {
+    "page_label": "124",
+    "caption": "Further notes on MMD-based DM: Emphasizes potential gaps in distribution coverage when only matching moments."
+  },
+  {
+    "page_label": "125",
+    "caption": "Adversarial Distribution Matching: Reformulates distribution alignment as a min-max optimization problem. A neural network learns a discrepancy metric ψ while synthetic data is optimized to minimize this metric."
+  },
+  {
+    "page_label": "126",
+    "caption": "Mathematical formulation of the adversarial distribution matching framework. The loss L is maximized w.r.t. ψ and minimized w.r.t. the synthetic data distribution."
+  },
+  {
+    "page_label": "127",
+    "caption": "Neural Characteristic Function Discrepancy (NCFD) is introduced. CF-based methods match real and synthetic distributions in the complex frequency domain."
+  },
+  {
+    "page_label": "128",
+    "caption": "Dataset Distillation with NCFD: Features are embedded, compared in the complex plane, and optimized via characteristic function-based discrepancies. An auxiliary network samples frequencies."
+  },
+  {
+    "page_label": "129",
+    "caption": "Course Scope Overview: Applications include MLLM Agents, Symbolic Agents, and Deep Reinforcement Learning Agents. Ties together all course components in a unified AI framework."
+  },
+  {
+    "page_label": "130",
+    "caption": "Lecture agenda: Markov Decision Processes (MDP), Policy Methods, Reinforcement Learning (Passive & Active), and Approximate Reinforcement Learning. Also includes a case study on LLM self-improvement."
+  },
+  {
+    "page_label": "131",
+    "caption": "Credits Berkeley’s CS188 for some slides used in the lecture, highlighting foundational sources for reinforcement learning material."
+  },
+  {
+    "page_label": "132",
+    "caption": "Introduction to Non-Deterministic Search. Uses the 'Racing Car' example where states include Cool, Warm, Overheated, and actions include Fast and Slow with probabilistic transitions."
+  },
+  {
+    "page_label": "133",
+    "caption": "Grid World example: A maze-like environment where the agent receives rewards, moves with uncertainty, and must learn to maximize reward over time."
+  },
+  {
+    "page_label": "134",
+    "caption": "Markov Decision Processes (MDP) are defined by states, actions, transition probabilities, and rewards. Emphasizes the Markov property where future states depend only on the present."
+  },
+  {
+    "page_label": "135",
+    "caption": "Explains what makes MDPs 'Markov': the outcome of an action depends solely on the current state, not the sequence of previous actions or states."
+  },
+  {
+    "page_label": "136",
+    "caption": "Policies in MDPs: A policy π is a mapping from states to actions. An optimal policy π* maximizes the expected utility if followed."
+  },
+  {
+    "page_label": "137",
+    "caption": "Optimal policies for various reward functions are visualized, showing how the agent's decisions vary based on the penalty/reward trade-off."
+  },
+  {
+    "page_label": "138",
+    "caption": "MDP Search Trees: A visual representation of how states and actions expand into a tree structure under uncertainty. Similar to expectimax."
+  },
+  {
+    "page_label": "139",
+    "caption": "Discussion on reward sequences: What preference should an agent have for rewards that are immediate versus those in the future?"
+  },
+  {
+    "page_label": "140",
+    "caption": "Discounting is introduced to favor earlier rewards. Rewards are decayed by a factor γ per step, making future rewards less valuable."
+  },
+  {
+    "page_label": "141",
+    "caption": "Quiz on Discounting: Shows how different discount factors (γ) affect the agent’s optimal policy. Also asks when East and West become equally preferable."
+  },
+  {
+    "page_label": "142",
+    "caption": "Problem of Infinite Utilities in MDPs: Discusses three solutions—finite horizon, discounting, and absorbing states to ensure termination."
+  },
+  {
+    "page_label": "143",
+    "caption": "Summary of MDP definition: Lists all components including states, actions, transitions, rewards, and discount. Defines key quantities like policy, utility, and value functions."
+  },
+  {
+    "page_label": "144",
+    "caption": "Goal in solving MDPs: Find V* (optimal value function) and Q* (optimal action-value function) to derive the best policy π*."
+  },
+  {
+    "page_label": "145",
+    "caption": "Gridworld example showing V* values after convergence: Visualizes how state utilities propagate based on reward structure and transition probabilities."
+  },
+  {
+    "page_label": "146",
+    "caption": "Gridworld example showing Q* values: Demonstrates how optimal action-values vary across states in the environment."
+  },
+  {
+    "page_label": "147",
+    "caption": "Recursive definition of value: V*(s) is defined in terms of max expected rewards across all possible actions and next states."
+  },
+  {
+    "page_label": "148",
+    "caption": "Continues the recursive formulation with mathematical notation: Highlights the interaction between V* and Q* in policy derivation."
+  },
+  {
+    "page_label": "149",
+    "caption": "Visual breakdown of value recursion across states and actions in the MDP tree. Explains the role of transition probabilities in computing expected values."
+  },
+  {
+    "page_label": "150",
+    "caption": "Closes value recursion concept by linking V*(s) to Q*(s,a) under max selection. Next step will be solving the recursive equations using dynamic programming."
+  },
+  {
+    "page_label": "151",
+    "caption": "Value Iteration algorithm is introduced as a method for solving MDPs. Iteratively updates values using Bellman backup until convergence. Guarantees optimal value function V*."
+  },
+  {
+    "page_label": "152",
+    "caption": "Example of Value Iteration in Gridworld: Step-by-step value updates are shown, highlighting how values propagate from goal states back through the environment."
+  },
+  {
+    "page_label": "153",
+    "caption": "Policy Extraction: Once optimal value function V* is found, the optimal policy π* is derived by selecting actions that maximize Q* at each state."
+  },
+  {
+    "page_label": "154",
+    "caption": "Policy Iteration: Alternates between policy evaluation and policy improvement. Begins with an initial policy and improves it until convergence."
+  },
+  {
+    "page_label": "155",
+    "caption": "Comparison of Value Iteration and Policy Iteration: Value Iteration performs more iterations but fewer per-iteration computations; Policy Iteration converges in fewer iterations but each is more expensive."
+  },
+  {
+    "page_label": "156",
+    "caption": "Introduction to Reinforcement Learning (RL): When transition probabilities and rewards are unknown, agents must learn through interaction and feedback."
+  },
+  {
+    "page_label": "157",
+    "caption": "Learning Types: Differentiates between passive and active learning. Passive learners evaluate a fixed policy, while active learners optimize the policy through exploration."
+  },
+  {
+    "page_label": "158",
+    "caption": "Temporal Difference (TD) Learning is introduced for passive RL. TD(0) updates state values based on observed reward and estimated value of next state."
+  },
+  {
+    "page_label": "159",
+    "caption": "TD Update Rule: V(s) ← V(s) + α(R + γV(s') − V(s)). Learns directly from raw experience without requiring a model of the environment."
+  },
+  {
+    "page_label": "160",
+    "caption": "Comparison of TD Learning and Monte Carlo methods. TD updates after each step and is bootstrapped, while Monte Carlo updates after full episodes but does not bootstrap."
+  },
+  {
+    "page_label": "161",
+    "caption": "TD Example: Shows value updates in a 5-state Markov chain as rewards are observed, emphasizing convergence through repeated sampling."
+  },
+  {
+    "page_label": "162",
+    "caption": "Active Reinforcement Learning: Agents must balance exploration (trying new actions) and exploitation (choosing known high-reward actions)."
+  },
+  {
+    "page_label": "163",
+    "caption": "Exploration Strategies: Includes random actions, epsilon-greedy (mostly exploit, sometimes explore), and more advanced strategies like UCB and Thompson Sampling."
+  },
+  {
+    "page_label": "164",
+    "caption": "Q-Learning is introduced as a model-free off-policy method. Learns Q*(s,a) directly by bootstrapping the max Q-value of the next state."
+  },
+  {
+    "page_label": "165",
+    "caption": "Q-Learning Update Rule: Q(s,a) ← Q(s,a) + α(R + γ max_a' Q(s',a') − Q(s,a)). Learns optimal action-value function through experience."
+  },
+  {
+    "page_label": "166",
+    "caption": "SARSA is introduced as an on-policy alternative to Q-Learning. Learns from the actual action taken rather than the greedy one."
+  },
+  {
+    "page_label": "167",
+    "caption": "Comparison of Q-Learning vs. SARSA: Q-Learning learns the optimal policy assuming a greedy future; SARSA learns the policy being followed (exploration-inclusive)."
+  },
+  {
+    "page_label": "168",
+    "caption": "Exploration in Gridworld: Demonstrates how different strategies affect the agent’s path and convergence. Shows benefits of ε-greedy policies."
+  },
+  {
+    "page_label": "169",
+    "caption": "Deep Q-Networks (DQN): Extends Q-Learning using neural networks to approximate Q-values. Introduced by DeepMind for learning from pixels in Atari games."
+  },
+  {
+    "page_label": "170",
+    "caption": "DQN Innovations: Experience replay and target networks stabilize training. These components help reduce correlation in updates and improve convergence."
+  },
+  {
+    "page_label": "171",
+    "caption": "Atari Example: DQN achieves superhuman performance on multiple Atari games using only visual input. Demonstrates power of deep RL."
+  },
+  {
+    "page_label": "172",
+    "caption": "Policy Gradient Methods: Instead of learning value functions, these methods directly optimize policy parameters to maximize expected return."
+  },
+  {
+    "page_label": "173",
+    "caption": "REINFORCE Algorithm: A Monte Carlo policy gradient method that updates policy using the log probability gradient scaled by return."
+  },
+  {
+    "page_label": "174",
+    "caption": "Policy Gradient Theorem: Provides a derivation of the gradient of expected return with respect to policy parameters using action probabilities."
+  },
+  {
+    "page_label": "175",
+    "caption": "Baseline Trick: Introduces variance reduction technique for policy gradients. Uses a baseline (e.g., value function) to subtract expected return without bias."
+  },
+  {
+    "page_label": "176",
+    "caption": "Actor-Critic Methods: Combines policy gradients (actor) with value estimation (critic). Actor adjusts the policy, critic evaluates actions."
+  },
+  {
+    "page_label": "177",
+    "caption": "Advantage Function: Defined as A(s,a) = Q(s,a) − V(s). Measures how much better an action is compared to the average."
+  },
+  {
+    "page_label": "178",
+    "caption": "Proximal Policy Optimization (PPO): A state-of-the-art on-policy RL method. Uses clipped surrogate objective to prevent large policy updates."
+  },
+  {
+    "page_label": "179",
+    "caption": "PPO Loss Function: Ensures stable updates by penalizing policy ratios that deviate too far from the old policy. Balances exploration and stability."
+  },
+  {
+    "page_label": "180",
+    "caption": "PPO in Practice: Widely adopted in modern RL benchmarks. Achieves strong performance in continuous control tasks and simulated robotics."
+  },
+  {
+    "page_label": "181",
+    "caption": "Reinforcement Learning in Minecraft: Introduction to MineDojo and Voyager, which use LLMs to guide embodied agents through open-world environments.\nSource: “MineDojo,” NeurIPS, 2022."
+  },
+  {
+    "page_label": "182",
+    "caption": "Voyager Framework: Uses LLMs to automatically generate tasks, learn skills, and store memory for continual learning in Minecraft.\nSource: “Voyager,” TMLR, 2024."
+  },
+  {
+    "page_label": "183",
+    "caption": "Skill Library in Voyager: Visualizes the skills acquired by the agent through experience and reflection. Supports zero-shot generalization."
+  },
+  {
+    "page_label": "184",
+    "caption": "Voyager’s Curriculum Learning: Tasks are automatically sequenced in increasing difficulty, allowing gradual acquisition of capabilities."
+  },
+  {
+    "page_label": "185",
+    "caption": "Memory Visualization in Voyager: Stores trajectories, learned skills, and decision traces to support agent reflection and re-use of knowledge."
+  },
+  {
+    "page_label": "186",
+    "caption": "Comparison with other RL agents: Voyager outperforms baselines in cumulative reward, number of unlocked skills, and task success rate in open-ended environments."
+  },
+  {
+    "page_label": "187",
+    "caption": "Additional Voyager examples show how the agent decomposes tasks, reflects on failures, and creates subgoals to solve complex challenges."
+  },
+  {
+    "page_label": "188",
+    "caption": "Illustration of Voyager interacting with the Minecraft world, including crafting, navigating, and fighting, guided by LLM-generated plans."
+  },
+  {
+    "page_label": "189",
+    "caption": "Summary of Voyager contributions: Introduces LLM-powered autonomous agents with memory, planning, and curriculum learning capabilities."
+  },
+  {
+    "page_label": "190",
+    "caption": "Emerging research areas in RL: Combining LLMs with symbolic reasoning, multi-agent coordination, and real-world robotics is a growing trend."
+  },
+  {
+    "page_label": "191",
+    "caption": "Multimodal agents integrating language, vision, and action are driving the next generation of intelligent systems. Applications include web automation, embodied AI, and tutoring."
+  },
+  {
+    "page_label": "192",
+    "caption": "Challenges in RL include sample efficiency, long-horizon credit assignment, safety, and generalization to unseen tasks."
+  },
+  {
+    "page_label": "193",
+    "caption": "Instruction tuning and feedback reinforcement learning are promising directions for aligning RL agents with human values and preferences."
+  },
+  {
+    "page_label": "194",
+    "caption": "Simulation-to-reality transfer is critical for real-world deployment of agents. Techniques include domain randomization and sim2real fine-tuning."
+  },
+  {
+    "page_label": "195",
+    "caption": "Real-world robot learning: Reinforcement learning has been applied to tasks like object manipulation, grasping, and locomotion using limited real data."
+  },
+  {
+    "page_label": "196",
+    "caption": "RLHF (Reinforcement Learning with Human Feedback): Introduced by OpenAI, used to align large models like InstructGPT and ChatGPT with human intent."
+  },
+  {
+    "page_label": "197",
+    "caption": "Summary of RLHF Process: Involves collecting preference data, training a reward model, and fine-tuning the language model using reinforcement learning."
+  },
+  {
+    "page_label": "198",
+    "caption": "ChatGPT is trained via RLHF: Human annotators rate model outputs, reward model is trained, and policy is optimized using PPO to align with human preferences."
+  },
+  {
+    "page_label": "199",
+    "caption": "Challenges in RLHF: Includes reward hacking, alignment drift, overfitting to annotators, and the cost of high-quality human data."
+  },
+  {
+    "page_label": "200",
+    "caption": "Final thoughts on RLHF: It’s an essential component of aligning foundation models with human values, but further research is needed for robustness and scalability."
+  },
+  {
+    "page_label": "201",
+    "caption": "RLHF Summary Slide: Reinforcement Learning with Human Feedback enables aligning large models with human preferences using scalable feedback loops. Central to systems like ChatGPT and Claude."
+  },
+  {
+    "page_label": "202",
+    "caption": "Challenges in RLHF alignment: Risk of reward hacking, distributional shift between training and deployment, annotator bias, and cost of supervision."
+  },
+  {
+    "page_label": "203",
+    "caption": "Beyond RLHF: Introduces alternative alignment techniques including Constitutional AI, Direct Preference Optimization (DPO), and iterative feedback loops with LLM self-improvement."
+  },
+  {
+    "page_label": "204",
+    "caption": "Constitutional AI: Uses LLMs to critique and revise outputs without human labelers. Reduces dependence on human feedback by using rules and values encoded into the model.\nSource: Anthropic, 2023."
+  },
+  {
+    "page_label": "205",
+    "caption": "Direct Preference Optimization (DPO): A new training objective that avoids RL fine-tuning by directly modeling preferences between outputs.\nSource: https://arxiv.org/abs/2305.18290"
+  },
+  {
+    "page_label": "206",
+    "caption": "AutoDPO: Automates DPO pipeline by generating, filtering, and ranking outputs via LLMs. Reduces reliance on external labelers.\nSource: https://arxiv.org/abs/2311.16482"
+  },
+  {
+    "page_label": "207",
+    "caption": "Self-Improving LLM Agents: Enables agents to autonomously improve via reflection, curriculum learning, and long-term memory.\nSource: Reflexion, Voyager, AutoGPT, etc."
+  },
+  {
+    "page_label": "208",
+    "caption": "Vision for the Future: MLLMs as Universal Interfaces. Bridging natural language with perception, action, memory, and reasoning across real and virtual environments."
+  },
+  {
+    "page_label": "209",
+    "caption": "Foundational Skills for Multimodal Agents: Representation, Generation, Alignment, Grounding, Reasoning, Acting, Tool Use, Memory, and Reflection."
+  },
+  {
+    "page_label": "210",
+    "caption": "Key Applications: Autonomous agents, education tutors, accessibility tools, creative design assistants, scientific discovery engines, and generalist AI platforms."
+  },
+  {
+    "page_label": "211",
+    "caption": "Final Summary: We covered generative models, diffusion, transformers, multimodal learning, vision-language alignment, agent modeling, RL, and alignment techniques like RLHF and DPO."
+  },
+  {
+    "page_label": "212",
+    "caption": "Thank You slide: Concludes the lecture with contact info for Wen-Huang Cheng at National Taiwan University: wenhuang@csie.ntu.edu.tw"
+  },
+  {
+    "page_label": "213",
+    "caption": "Continues the discussion of alignment in multimodal agents, focusing on structured supervision and role-level evaluation in grounding semantics across modalities."
+  },
+  {
+    "page_label": "214",
+    "caption": "Compares different methods of event alignment, including contrastive learning and optimal transport, with performance metrics in zero-shot settings."
+  },
+  {
+    "page_label": "215",
+    "caption": "Ablation studies on event-aligned vision-language models show improvements in robustness and semantic consistency."
+  },
+  {
+    "page_label": "216",
+    "caption": "Case studies showing improved captioning accuracy when using structured event representations, particularly in ambiguous or cluttered scenes."
+  },
+  {
+    "page_label": "217",
+    "caption": "Benchmarks event-based pretraining on downstream tasks such as VQA, visual commonsense reasoning, and image-text retrieval."
+  },
+  {
+    "page_label": "218",
+    "caption": "Highlights efficiency gains in training with event-structured supervision, reducing data needs while improving semantic alignment."
+  },
+  {
+    "page_label": "219",
+    "caption": "Structured captioning examples compare traditional approaches with event-enhanced outputs, demonstrating better role disambiguation."
+  },
+  {
+    "page_label": "220",
+    "caption": "Shows compositional generalization in novel scenes by recombining known agent-object-action patterns through event structure alignment."
+  },
+  {
+    "page_label": "221",
+    "caption": "Failure case analysis where models confuse agents or actions due to incomplete visual context or annotation noise."
+  },
+  {
+    "page_label": "222",
+    "caption": "Summarizes advantages of event-aware multimodal learning: interpretability, compositional generalization, and zero-shot robustness."
+  },
+  {
+    "page_label": "223",
+    "caption": "Transitions to a new lecture segment with the 'AI Weekly' title slide, indicating a shift in topic."
+  },
+  {
+    "page_label": "224",
+    "caption": "Lecture shift toward LLM-based multimodal agents and structured prompting. Repeats the 'AI Weekly' banner."
+  },
+  {
+    "page_label": "225",
+    "caption": "Presents an overview of recent agent systems like AutoGPT and BabyAGI. Highlights the idea of autonomous task planning."
+  },
+  {
+    "page_label": "226",
+    "caption": "Illustrates the classic 'Reasoning Loop' in agent design: Observation → Thought → Action → Observation, reused in LLM agents."
+  },
+  {
+    "page_label": "227",
+    "caption": "AutoGPT architecture breakdown: planner, memory, executor. Uses LLM to generate reasoning traces and select actions via tool APIs."
+  },
+  {
+    "page_label": "228",
+    "caption": "Tool use in agents is divided into APIs (e.g. browser, calculator) and environment-specific actions (e.g. move, pick, place)."
+  },
+  {
+    "page_label": "229",
+    "caption": "Planning with prompting: Demonstrates how prompting templates are structured to elicit sequential actions and reflections from the LLM."
+  },
+  {
+    "page_label": "230",
+    "caption": "Reflexion framework (NeurIPS 2023): Enhances agent learning via verbal reinforcement — agents critique and refine their own output."
+  },
+  {
+    "page_label": "231",
+    "caption": "Illustrates the Reflexion feedback loop: Actor generates, Evaluator provides feedback, Reflector updates future strategy."
+  },
+  {
+    "page_label": "232",
+    "caption": "Skill accumulation in autonomous agents: Uses self-generated logs and reflections to build up a reusable knowledge base."
+  },
+  {
+    "page_label": "233",
+    "caption": "Evaluation of self-reflective agents shows improved task completion and generalization in complex multi-step environments."
+  },
+  {
+    "page_label": "234",
+    "caption": "Extends from single-agent models to multi-agent collaboration. Demonstrates role-based LLM interaction for cooperative tasks."
+  },
+  {
+    "page_label": "235",
+    "caption": "ChatArena and CAMEL examples: Show agents acting as different roles (e.g. scientist, engineer) and communicating through natural language."
+  },
+  {
+    "page_label": "236",
+    "caption": "Role-playing LLM agents show emergent properties such as negotiation, conflict resolution, and cooperative problem-solving."
+  },
+  {
+    "page_label": "237",
+    "caption": "Challenges in agent modeling: Includes context length limits, hallucinations, tool invocation latency, and long-term memory."
+  },
+  {
+    "page_label": "238",
+    "caption": "Proposed solutions: Hierarchical memory, retrieval-augmented generation (RAG), and hybrid symbolic-neural architectures."
+  },
+  {
+    "page_label": "239",
+    "caption": "ToolBench and AgentBench benchmarks are introduced to evaluate tool use, reasoning, and planning across open-ended tasks."
+  },
+  {
+    "page_label": "240",
+    "caption": "ToolBench task examples: Web navigation, math problem solving, API use, showing LLMs augmented by tool access significantly outperform base models."
+  },
+  {
+    "page_label": "241",
+    "caption": "Training pipeline for tool-augmented agents includes tool-call data collection, decision fine-tuning, and real-time evaluation."
+  },
+  {
+    "page_label": "242",
+    "caption": "Open problems: Scaling tool APIs, error propagation in long sequences, and designing natural language tool interfaces."
+  },
+  {
+    "page_label": "243",
+    "caption": "Lecture transitions back to fundamentals — 'Planning as Search' and classic AI decision-making frameworks are reintroduced."
+  },
+  {
+    "page_label": "244",
+    "caption": "Planning formalism: Defines states, actions, transitions, and goals in classical planning terminology."
+  },
+  {
+    "page_label": "245",
+    "caption": "DFS, BFS, UCS, and A* search strategies are described. Agents may use planning heuristics to determine best action sequences."
+  },
+  {
+    "page_label": "246",
+    "caption": "A* Search: Combines actual cost g(n) and estimated cost h(n) for efficient planning. Widely used in both symbolic and hybrid AI."
+  },
+  {
+    "page_label": "247",
+    "caption": "Real-world planning examples: Delivery drone pathfinding, robotic arm motion planning, web automation sequences."
+  },
+  {
+    "page_label": "248",
+    "caption": "Limitations of symbolic planning: Struggles with perception, ambiguity, and stochastic environments. Motivates hybrid models."
+  },
+  {
+    "page_label": "249",
+    "caption": "Neuro-symbolic agents: Integrate symbolic planning with neural perception and language models. Example: SayPlan, ActPlan."
+  },
+  {
+    "page_label": "250",
+    "caption": "SayPlan model: Converts user goals into symbolic plans using LLMs, then executes via symbolic logic and neural grounding."
+  },
+  {
+    "page_label": "251",
+    "caption": "SayPlan results: Better planning success rate and interpretability versus black-box neural policies in structured tasks."
+  },
+  {
+    "page_label": "252",
+    "caption": "Hybrid agents use symbolic logic for global planning and neural policies for local actions. Applied in robotics and web tasks."
+  },
+  {
+    "page_label": "253",
+    "caption": "Emerging trend: Leveraging LLMs for 'code as policy' — generating low-level control programs for high-level instructions."
+  },
+  {
+    "page_label": "254",
+    "caption": "Examples of LLMs generating Python code for controlling simulations, robots, or web agents. Promotes transparency and reuse."
+  },
+  {
+    "page_label": "255",
+    "caption": "Challenges with code generation as policy: includes hallucinations, error handling, and safety in physical environments."
+  },
+  {
+    "page_label": "256",
+    "caption": "RLHF and feedback fine-tuning help reduce code generation errors and align agents with human intent more effectively."
+  },
+  {
+    "page_label": "257",
+    "caption": "Future research directions: Unified agent architectures, continual learning, interpretable planning, and real-time reasoning loops."
+  },
+  {
+    "page_label": "258",
+    "caption": "Recap: Structured prompting, tool use, planning, and reflection are core pillars of building powerful, general-purpose agents."
+  },
+  {
+    "page_label": "259",
+    "caption": "Case study: AutoGPT system walkthrough showing task breakdown, memory usage, web interaction, and iterative refinement."
+  },
+  {
+    "page_label": "260",
+    "caption": "AutoGPT failure case: Loops between planning steps without convergence. Highlights need for better termination criteria."
+  },
+  {
+    "page_label": "261",
+    "caption": "Improved control flow with symbolic loops and task memory reduces unnecessary computation and helps agent reliability."
+  },
+  {
+    "page_label": "262",
+    "caption": "Summary slide: Future agents will require hybrid systems blending neural, symbolic, and interactive elements for robustness and interpretability."
+  },
+  {
+    "page_label": "263",
+    "caption": "Lecture ends with a motivational message on the synergy between foundational models and interactive agents in real-world deployment."
+  },
+  {
+    "page_label": "264",
+    "caption": "MLLM Pretraining with Event Semantic Structures: Presents a structured alignment framework using Optimal Transport. Aligns event graphs from text and images through cost matrices.\nSource: “Knowledge-Driven Vision-Language Encoding,” CVPR, 2023."
+  },
+  {
+    "page_label": "265",
+    "caption": "Event Graph Alignment: Defines a cost matrix C based on embedding similarity to align text and image event structures at the event level.\nSource: “Knowledge-Driven Vision-Language Encoding,” CVPR, 2023."
+  },
+  {
+    "page_label": "266",
+    "caption": "Optimization Strategy: Employs Sinkhorn Knopp algorithm to approximate the transport plan minimizing distance between text and image event distributions.\nSource: “Knowledge-Driven Vision-Language Encoding,” CVPR, 2023."
+  },
+  {
+    "page_label": "267",
+    "caption": "Iterative Optimization: Details steps to compute the optimal transport matrix using differentiable Sinkhorn iterations.\nSource: “Knowledge-Driven Vision-Language Encoding,” CVPR, 2023."
+  },
+  {
+    "page_label": "268",
+    "caption": "Visual Event Extraction: Zero-shot extraction of visual events like 'Vaccination' or 'Protest' by identifying agents and participants in the image.\nSource: “Knowledge-Driven Vision-Language Encoding,” CVPR, 2023."
+  },
+  {
+    "page_label": "269",
+    "caption": "Event Ontologies: More complex structures including multiple agents and roles per event type. Supports structured understanding across scenarios.\nSource: “Knowledge-Driven Vision-Language Encoding,” CVPR, 2023."
+  },
+  {
+    "page_label": "270",
+    "caption": "Visual Event Generalization: Demonstrates robustness in extracting event types, agents, and objects in diverse visual inputs using pretrained MLLMs."
+  },
+  {
+    "page_label": "271",
+    "caption": "Zero-shot Visual Event Understanding: Emphasizes the importance of pretrained event-based vision-language alignment for generalization."
+  },
+  {
+    "page_label": "272",
+    "caption": "Contrastive Event Learning: Aligns visual and textual semantics by contrasting positive and negative event-label examples during training."
+  },
+  {
+    "page_label": "273",
+    "caption": "Compositional Generalization: Supports understanding of unseen events by recomposing known visual-textual fragments into novel scenarios."
+  },
+  {
+    "page_label": "274",
+    "caption": "Event-Aware Captioning: Leverages structured event representations to generate semantically grounded captions for complex scenes."
+  },
+  {
+    "page_label": "275",
+    "caption": "Evaluation: Benchmarks structured alignment using event-level metrics such as alignment accuracy, role prediction, and robustness."
+  },
+  {
+    "page_label": "276",
+    "caption": "Text-Image Event Alignment Examples: Shows how optimal transport aligns sentence event structures with detected visual entities."
+  },
+  {
+    "page_label": "277",
+    "caption": "Fine-Grained Event Roles: Demonstrates disambiguation of agent/target/instrument roles in complex multi-agent scenes."
+  },
+  {
+    "page_label": "278",
+    "caption": "Applications: Structured event representations benefit downstream tasks including VQA, captioning, and video understanding."
+  },
+  {
+    "page_label": "279",
+    "caption": "Cross-Modal Event Transfer: Enables transfer of event semantics between image and text domains to improve generalizability."
+  },
+  {
+    "page_label": "280",
+    "caption": "Visual Commonsense: Events offer a foundation for modeling intentions, temporal sequences, and interactions in multimodal AI."
+  },
+  {
+    "page_label": "281",
+    "caption": "Future Directions: Incorporate world knowledge and reasoning to improve event extraction quality under ambiguity."
+  },
+  {
+    "page_label": "282",
+    "caption": "Event Datasets: Curates datasets rich in temporal and semantic event annotations for training and evaluation."
+  },
+  {
+    "page_label": "283",
+    "caption": "Pretraining Objectives: Introduces event-aware loss functions to enhance contrastive learning and semantic alignment."
+  },
+  {
+    "page_label": "284",
+    "caption": "Zero-shot Performance: Benchmarks models’ ability to extract unseen events with no task-specific tuning."
+  },
+  {
+    "page_label": "285",
+    "caption": "Text-to-Image Event Translation: Generates visual scenes from structured event templates, improving generative grounding."
+  },
+  {
+    "page_label": "286",
+    "caption": "Scene Graph Integration: Combines object-centric scene graphs with event-centric representations for richer multimodal modeling."
+  },
+  {
+    "page_label": "287",
+    "caption": "Multimodal Training Efficiency: Structured supervision allows for faster convergence and better representation disentanglement."
+  },
+  {
+    "page_label": "288",
+    "caption": "Annotation Strategy: Describes semi-automatic event graph annotation techniques for efficient dataset construction."
+  },
+  {
+    "page_label": "289",
+    "caption": "Event Querying: Enables structured queries over multimodal content, such as 'who did what with whom, where, and when.'"
+  },
+  {
+    "page_label": "290",
+    "caption": "Robustness to Distractors: Evaluates whether models can still extract correct events when scenes include misleading visual cues."
+  },
+  {
+    "page_label": "291",
+    "caption": "Qualitative Examples: Case studies show that event-aligned models produce more accurate captions and answers in VQA settings."
+  },
+  {
+    "page_label": "292",
+    "caption": "Failure Cases: Discusses scenarios where event-level misalignment leads to incorrect agent/target predictions or miscaptioning."
+  },
+  {
+    "page_label": "293",
+    "caption": "Improving Explainability: Event structure offers interpretability into how and why MLLMs make certain predictions."
+  },
+  {
+    "page_label": "294",
+    "caption": "Structured Representation Hierarchies: Extends event graphs with sub-event and super-event levels for temporal modeling."
+  },
+  {
+    "page_label": "295",
+    "caption": "End-to-End Training Pipeline: Visualizes how images are encoded, aligned, and decoded with event supervision from raw inputs."
+  },
+  {
+    "page_label": "296",
+    "caption": "Alignment Accuracy: Quantitative evaluation using role-level precision and event-type classification benchmarks."
+  },
+  {
+    "page_label": "297",
+    "caption": "Scene Ambiguity: Addresses the challenge of partial observability and conflicting visual evidence in real-world event understanding."
+  },
+  {
+    "page_label": "298",
+    "caption": "Cross-Lingual Transfer: Event alignment facilitates transferring knowledge between languages via structured semantic matching."
+  },
+  {
+    "page_label": "299",
+    "caption": "Graph-based Transformer Models: Introduces specialized attention mechanisms for learning over structured event representations."
+  },
+  {
+    "page_label": "300",
+    "caption": "Recap: Structured multimodal learning with events supports generalization, interpretability, and improved grounding in AI systems."
+  },
+  {
+    "page_label": "301",
+    "caption": "Lecture Transition: Begins new topic likely related to reasoning or reinforcement learning, transitioning from event-centric vision-language models."
+  },
+  {
+    "page_label": "302",
+    "caption": "Opening Slide: Reasoning in Multimodal Systems. Introduces the agenda involving commonsense, CoT, benchmarks, and symbolic logic."
+  },
+  {
+    "page_label": "303",
+    "caption": "Reasoning Basics: Outlines foundation of deductive, inductive, and abductive reasoning in AI models and their multimodal extensions."
+  },
+  {
+    "page_label": "304",
+    "caption": "Chain-of-Thought (CoT): Breaks down how LLMs generate reasoning traces, including examples of zero-shot and few-shot CoT prompting."
+  },
+  {
+    "page_label": "305",
+    "caption": "Zero-shot CoT Prompting: Demonstrates how inserting phrases like 'Let's think step-by-step' improves reasoning output."
+  },
+  {
+    "page_label": "306",
+    "caption": "Few-shot CoT Prompting: Uses in-context examples to elicit multi-step reasoning. Shown to outperform zero-shot in complex tasks."
+  },
+  {
+    "page_label": "307",
+    "caption": "Analogy Reasoning: LLMs can match structured analogies using semantic similarity and structured mapping of relations."
+  },
+  {
+    "page_label": "308",
+    "caption": "Multimodal CoT: Visual + text input reasoning chains improve interpretability and enable visual question answering beyond perception."
+  },
+  {
+    "page_label": "309",
+    "caption": "Commonsense Integration: Highlights use of knowledge bases and pretraining strategies to support grounded reasoning."
+  },
+  {
+    "page_label": "310",
+    "caption": "Benchmarking Reasoning: Introduces datasets such as VCR, VisualCOMET, and AI2D for evaluating multimodal reasoning performance."
+  },
+  {
+    "page_label": "311",
+    "caption": "VisualCOMET: Uses static images to infer past, current, and likely future events through causal and temporal prediction."
+  },
+  {
+    "page_label": "312",
+    "caption": "AI2D and Diagram Reasoning: Tests spatial and scientific reasoning using diagram inputs, image labels, and textual inference."
+  },
+  {
+    "page_label": "313",
+    "caption": "Recap: CoT and structured reasoning enhance AI model ability to solve real-world multimodal tasks with transparency and control."
+  },
+  {
+    "page_label": "314",
+    "caption": "Begins lecture on multimodal reasoning. Introduces the importance of structured logic and commonsense inference across text and image modalities."
+  },
+  {
+    "page_label": "315",
+    "caption": "Overview of CoT (Chain-of-Thought) prompting for LLMs. Emphasizes its benefits in decomposing complex reasoning into interpretable steps."
+  },
+  {
+    "page_label": "316",
+    "caption": "Examples of zero-shot CoT prompting using templates like 'Let's think step by step.' Improves LLM accuracy on arithmetic and logic questions."
+  },
+  {
+    "page_label": "317",
+    "caption": "Few-shot CoT prompting adds 2–3 in-context examples to guide the model's reasoning process, shown to further boost performance."
+  },
+  {
+    "page_label": "318",
+    "caption": "Multimodal CoT uses both vision and language inputs. Example: 'Given this image, what is the most likely next event?'"
+  },
+  {
+    "page_label": "319",
+    "caption": "VisualCOMET dataset introduced: infers past, present, and future events from static images using narrative chains of reasoning."
+  },
+  {
+    "page_label": "320",
+    "caption": "Causal reasoning benchmark tasks introduced. Requires models to explain 'why' an event occurred, not just describe it."
+  },
+  {
+    "page_label": "321",
+    "caption": "Diagram-based reasoning from AI2D involves interpreting labeled visuals (e.g., physics or biology diagrams) and answering textual questions."
+  },
+  {
+    "page_label": "322",
+    "caption": "Commonsense knowledge integration improves grounding. Uses ConceptNet, ATOMIC, and other sources to inject world knowledge."
+  },
+  {
+    "page_label": "323",
+    "caption": "Limitations of shallow CoT methods: prone to hallucination, inconsistent logic, and failure in multi-hop scenarios without feedback."
+  },
+  {
+    "page_label": "324",
+    "caption": "Improving CoT: Strategies include self-consistency (sampling multiple chains), verifier models, and retrieval-augmented CoT."
+  },
+  {
+    "page_label": "325",
+    "caption": "Self-consistency: Generates multiple reasoning paths and aggregates answers. Reduces overconfidence and brittle logic."
+  },
+  {
+    "page_label": "326",
+    "caption": "Verifier-augmented CoT: A separate verifier model evaluates the validity of reasoning chains before accepting an answer."
+  },
+  {
+    "page_label": "327",
+    "caption": "Retriever-augmented CoT: LLMs retrieve relevant facts or examples during the reasoning process. Helps bridge knowledge gaps."
+  },
+  {
+    "page_label": "328",
+    "caption": "Diagram reasoning with multimodal CoT: Models must interpret visual entities and relationships while reasoning textually."
+  },
+  {
+    "page_label": "329",
+    "caption": "Visual question answering (VQA) with CoT: Demonstrates improved performance when reasoning steps are explicitly prompted."
+  },
+  {
+    "page_label": "330",
+    "caption": "Benchmark results: Chain-of-thought prompting significantly improves accuracy across arithmetic, commonsense, and visual QA tasks."
+  },
+  {
+    "page_label": "331",
+    "caption": "Continued benchmark comparison across VCR, ScienceQA, and VisualCOMET with and without CoT prompting."
+  },
+  {
+    "page_label": "332",
+    "caption": "Reasoning trace visualization: Shows how model progressively builds logic across multiple modalities."
+  },
+  {
+    "page_label": "333",
+    "caption": "Structured CoT representations include logic trees or graph-structured intermediate steps. Aids interpretability and debugging."
+  },
+  {
+    "page_label": "334",
+    "caption": "Applications of CoT: Educational tutoring systems, explainable medical AI, and intelligent robotics with feedback loops."
+  },
+  {
+    "page_label": "335",
+    "caption": "Limitations of current reasoning models: Highlights issues like lack of grounding, inconsistencies, and spurious correlations."
+  },
+  {
+    "page_label": "336",
+    "caption": "Methods for self-refinement in reasoning: Uses Reflective prompting, critique-then-revise loops, and chain editing."
+  },
+  {
+    "page_label": "337",
+    "caption": "Model self-critiquing example: 'Was that reasoning valid?' – Model reflects and rewrites its own CoT output for improved logic."
+  },
+  {
+    "page_label": "338",
+    "caption": "Planning with reasoning traces: Agents use CoT not only for QA but also for generating action plans in structured environments."
+  },
+  {
+    "page_label": "339",
+    "caption": "Case Study: Using CoT in household task planning (e.g., cleaning a room). Agent decomposes instruction into subtasks and evaluates feasibility."
+  },
+  {
+    "page_label": "340",
+    "caption": "Visual input conditioning: Chain-of-thought can be grounded in spatial layout or pixel features (e.g., object position, layout)."
+  },
+  {
+    "page_label": "341",
+    "caption": "Temporal reasoning: Reasoning across events in a timeline, useful for video QA and narrative understanding."
+  },
+  {
+    "page_label": "342",
+    "caption": "Event prediction via CoT: Predicts what happens next in a story or image series using learned logical patterns."
+  },
+  {
+    "page_label": "343",
+    "caption": "Incorporating external memory: CoT enhanced with long-term memory modules allows models to recall previous steps."
+  },
+  {
+    "page_label": "344",
+    "caption": "Graph-based reasoning: Combines symbolic graphs with CoT for complex multi-entity logic (e.g., family trees, causal chains)."
+  },
+  {
+    "page_label": "345",
+    "caption": "Multi-agent reasoning: CoT extended to simulate multiple viewpoints or roles in a social or collaborative task."
+  },
+  {
+    "page_label": "346",
+    "caption": "Dialogue reasoning: Tracking conversational logic across turns. CoT helps models manage context, beliefs, and intent."
+  },
+  {
+    "page_label": "347",
+    "caption": "Ethical reasoning: CoT models are being tested on dilemmas requiring value judgments, fairness, and moral alignment."
+  },
+  {
+    "page_label": "348",
+    "caption": "Structured prompting for value-aligned reasoning: Specifies ethical principles in the prompt to guide LLM behavior."
+  },
+  {
+    "page_label": "349",
+    "caption": "Tool use during reasoning: CoT sequences can include calls to tools such as calculators, search engines, or simulators."
+  },
+  {
+    "page_label": "350",
+    "caption": "Mathematical reasoning with external tools: LLM generates a reasoning trace and calls a calculator for intermediate results."
+  },
+  {
+    "page_label": "351",
+    "caption": "Verifiable reasoning outputs: CoT used to produce not only answers but also step-by-step derivations for transparency."
+  },
+  {
+    "page_label": "352",
+    "caption": "Multimodal CoT model architecture: Combines vision encoder, text decoder, and a reasoning module with optional tool routing."
+  },
+  {
+    "page_label": "353",
+    "caption": "Common reasoning benchmarks introduced: VCR, ScienceQA, MathVista, and VisualSpatial Reasoning datasets."
+  },
+  {
+    "page_label": "354",
+    "caption": "VisualSpatialReasoning example: Agents must determine relative positions or interactions between objects in images."
+  },
+  {
+    "page_label": "355",
+    "caption": "Logic puzzles as CoT tasks: Model solves riddles, analogies, or logic puzzles by explicitly tracing decisions step-by-step."
+  },
+  {
+    "page_label": "356",
+    "caption": "Reasoning leaderboard comparison: GPT-4 and Claude lead on most benchmarks, followed by PaLM-2 and Gemini models."
+  },
+  {
+    "page_label": "357",
+    "caption": "Emerging challenges: hallucinated steps, insufficient depth of reasoning, and poor generalization to real-world scenarios."
+  },
+  {
+    "page_label": "358",
+    "caption": "Ongoing work: Improving grounding, commonsense consistency, long-horizon logic, and self-verification in LLM reasoning."
+  },
+  {
+    "page_label": "359",
+    "caption": "Recap slide: CoT prompting, commonsense integration, visual reasoning, and tool usage are converging toward robust multimodal reasoning agents."
+  },
+  {
+    "page_label": "360",
+    "caption": "Transition to next section: Agent-based planning and reasoning integration with a focus on multimodal understanding and control."
+  },
+  {
+    "page_label": "361",
+    "caption": "Title slide: 'AI Agents with Multimodal Reasoning'—kicking off final section of the lecture series."
+  },
+  {
+    "page_label": "362",
+    "caption": "Review: Topics covered include Transformers, diffusion models, MLLMs, CoT reasoning, structured prompting, and multimodal agents."
+  },
+  {
+    "page_label": "363",
+    "caption": "Applications discussed: Education (tutors), Robotics, Simulation control, Accessibility tools, and Creative assistants."
+  },
+  {
+    "page_label": "364",
+    "caption": "Challenges and frontiers: Long-context modeling, real-time feedback, continual learning, ethical reasoning, and tool orchestration."
+  },
+  {
+    "page_label": "365",
+    "caption": "Concluding vision: The fusion of language, vision, memory, and reasoning will drive the next generation of general-purpose AI agents."
+  },
+  {
+    "page_label": "366",
+    "caption": "Title slide: 'AI Agents for Real-World Deployment' – introduces final lecture section focused on bridging research to practice."
+  },
+  {
+    "page_label": "367",
+    "caption": "Real-world challenges for AI agents: includes noisy data, ambiguous goals, incomplete instructions, and dynamic environments."
+  },
+  {
+    "page_label": "368",
+    "caption": "Simulation-to-Reality Gap: Agents trained in simulation often fail when deployed in physical or web environments due to distribution shift."
+  },
+  {
+    "page_label": "369",
+    "caption": "Techniques to address sim2real gap: domain randomization, fine-tuning on real data, and curriculum learning in deployment."
+  },
+  {
+    "page_label": "370",
+    "caption": "Case study: Robotics with visual policy learned in simulation. Uses depth prediction, visual grounding, and affordance maps."
+  },
+  {
+    "page_label": "371",
+    "caption": "WebAgent example: Navigates websites and fills forms using vision + language + memory agents trained in simulation."
+  },
+  {
+    "page_label": "372",
+    "caption": "Action grounding: Agent maps textual instructions to environment-specific actions using a trained translator or schema."
+  },
+  {
+    "page_label": "373",
+    "caption": "Interactive agents in Minecraft: Uses open-ended goals to autonomously explore, plan, and reflect. Example: Voyager system."
+  },
+  {
+    "page_label": "374",
+    "caption": "Voyager memory module: Stores task traces and learned skills in a library to support reuse and planning across episodes."
+  },
+  {
+    "page_label": "375",
+    "caption": "Task planning using memories: System retrieves relevant past experiences based on similarity to current goal."
+  },
+  {
+    "page_label": "376",
+    "caption": "Language-driven skill composition: Agents reuse prior code snippets or action sequences to solve unseen tasks."
+  },
+  {
+    "page_label": "377",
+    "caption": "Evaluation of long-horizon skill reuse: Shows increased success in cumulative reward and reduced task time over episodes."
+  },
+  {
+    "page_label": "378",
+    "caption": "Memory retrieval architecture: Uses semantic embedding of goals and outcomes for efficient look-up."
+  },
+  {
+    "page_label": "379",
+    "caption": "Reflection mechanism in Voyager: Agent critiques its failed plans and proposes revisions, storing the improvements."
+  },
+  {
+    "page_label": "380",
+    "caption": "Skill evolution visualization: Timeline shows how skills are refined and composed into more complex behaviors."
+  },
+  {
+    "page_label": "381",
+    "caption": "Curriculum generation: Agent proposes increasingly difficult tasks for itself, enabling automatic capability expansion."
+  },
+  {
+    "page_label": "382",
+    "caption": "Case study: AutoGPT uses long-term memory, a planner, executor, and tools like browsing and file storage to complete real-world web tasks."
+  },
+  {
+    "page_label": "383",
+    "caption": "AutoGPT architecture: Detailed breakdown of its core modules including LLM controller, memory store, tool invoker, and result summarizer."
+  },
+  {
+    "page_label": "384",
+    "caption": "Limitations of AutoGPT: Loops, over-planning, hallucinated tools, and poor memory management noted as common issues."
+  },
+  {
+    "page_label": "385",
+    "caption": "Improving loop control: Use of symbolic rules, reflection checkpoints, and termination triggers reduces infinite planning cycles."
+  },
+  {
+    "page_label": "386",
+    "caption": "Task decomposition techniques: Prompting strategies that break user goals into actionable subtasks using LLM planning chains."
+  },
+  {
+    "page_label": "387",
+    "caption": "Tool usage benchmarks: Evaluates agent accuracy when using calculators, file APIs, search engines, and custom plugins."
+  },
+  {
+    "page_label": "388",
+    "caption": "Tool usage via natural language: LLM parses user instruction into API call with correct parameters using prompt-based schemas."
+  },
+  {
+    "page_label": "389",
+    "caption": "ToolFormer model (NeurIPS 2023): LLM decides whether a tool is useful, inserts the tool call, and evaluates the output in context."
+  },
+  {
+    "page_label": "390",
+    "caption": "ToolFormer architecture: Combines a generator (LLM), API library, tool filter (based on output usefulness), and retraining on augmented data."
+  },
+  {
+    "page_label": "391",
+    "caption": "Training data generation for ToolFormer: Uses self-supervised data collection where the LLM proposes and evaluates tool usage."
+  },
+  {
+    "page_label": "392",
+    "caption": "Examples: Using calculator for arithmetic, browser for fact checking, and code interpreter for parsing structured data."
+  },
+  {
+    "page_label": "393",
+    "caption": "ToolFormer results: Significant improvement in QA, math, and retrieval tasks when tools are appropriately used."
+  },
+  {
+    "page_label": "394",
+    "caption": "AgentBench benchmark: Evaluates LLM agents on real-world task success, robustness, and planning correctness."
+  },
+  {
+    "page_label": "395",
+    "caption": "AgentBench leaderboard: GPT-4-turbo, Claude, Gemini, and Mixtral compared on task completion and memory reliability."
+  },
+  {
+    "page_label": "396",
+    "caption": "Memory grounding in agents: Combines vector stores, symbolic log entries, and relevance filtering for scalable task memory."
+  },
+  {
+    "page_label": "397",
+    "caption": "Long-term planning with LLMs: Strategies include goal-tree expansion, loop detection, reflection checkpoints, and retry triggers."
+  },
+  {
+    "page_label": "398",
+    "caption": "LLM-based coding agents: Generates programs to automate data processing, UI interactions, and simulations."
+  },
+  {
+    "page_label": "399",
+    "caption": "Evaluation of coding agents: Benchmarks include HumanEval, MBPP, and WebArena with auto-grading metrics."
+  },
+  {
+    "page_label": "400",
+    "caption": "Recap of agent components: Planner (LLM), Memory, Tool Executor, Critic, and Reward Model all work in a looped pipeline."
+  },
+  {
+    "page_label": "401",
+    "caption": "Final case study: Autonomous science agents generate hypotheses, simulate results, refine hypotheses, and propose new experiments."
+  },
+  {
+    "page_label": "402",
+    "caption": "Example from ChemCrow: LLM agent uses reaction databases, lab simulators, and scientific papers to design new molecules."
+  },
+  {
+    "page_label": "403",
+    "caption": "Autonomous data scientist agent: Analyzes datasets, identifies features, builds models, evaluates, and retrains using LLM pipeline."
+  },
+  {
+    "page_label": "404",
+    "caption": "Research assistant agent: Combines search, summarization, citation generation, and memory storage into a scientific assistant workflow."
+  },
+  {
+    "page_label": "405",
+    "caption": "Limitations of current agent systems: Poor interpretability, fragility, tool hallucination, scaling bottlenecks, and lack of debugging tools."
+  },
+  {
+    "page_label": "406",
+    "caption": "Future vision: AgentOS – modular AI agent operating system to support plug-and-play agents, tools, evaluators, and memory layers."
+  },
+  {
+    "page_label": "407",
+    "caption": "Closing reflections: Fusion of LLM reasoning, structured planning, multimodal grounding, and tool augmentation will define future AI systems."
+  },
+  {
+    "page_label": "408",
+    "caption": "Final technical recap: Covered MLLMs, Transformers, Diffusion Models, Reasoning, Agents, RLHF, and Interactive Planning."
+  },
+  {
+    "page_label": "409",
+    "caption": "Inspirational conclusion: Encourages researchers to combine foundation models with structured agent architectures to push boundaries."
+  },
+  {
+    "page_label": "410",
+    "caption": "Credits slide: Acknowledges contributors, datasets, and collaborating institutions involved in the preparation of these lecture materials."
+  },
+  {
+    "page_label": "411",
+    "caption": "Final slide: 'Thank You' with contact info for Prof. Wen-Huang Cheng, National Taiwan University – wenhuang@csie.ntu.edu.tw."
+  },
+  {
+    "page_label": "412",
+    "caption": "Bonus reference slide (1/3): Lists foundational papers on Transformers, Diffusion, and Multimodal Models."
+  },
+  {
+    "page_label": "413",
+    "caption": "Bonus reference slide (2/3): Includes recent benchmark datasets and evaluation platforms such as MMBench and AgentBench."
+  },
+  {
+    "page_label": "414",
+    "caption": "Bonus reference slide (3/3): Further reading on RLHF, Reflexion, AutoGPT, and Voyager agents."
+  },
+  {
+    "page_label": "415",
+    "caption": "Final 'Stay curious!' slide encourages students to build, reflect, and explore in the evolving field of AI agents."
+  },
+  {
+    "page_label": "416",
+    "caption": "Appendix section begins: additional technical insights, model visualizations, or extended examples beyond the core lecture content."
+  },
+  {
+    "page_label": "417",
+    "caption": "Transformer variations: Shows how recent models like Performer, Linformer, and Longformer modify attention to improve scalability."
+  },
+  {
+    "page_label": "418",
+    "caption": "Performer: Introduces kernelized attention for linear time complexity using random feature mappings.\nSource: ICML 2020"
+  },
+  {
+    "page_label": "419",
+    "caption": "Linformer: Projects key and value matrices to lower-dimensional subspaces, enabling efficient attention computation.\nSource: ICML 2020"
+  },
+  {
+    "page_label": "420",
+    "caption": "Longformer: Uses dilated sliding window attention and global attention tokens to handle long input sequences efficiently.\nSource: ACL 2020"
+  },
+  {
+    "page_label": "421",
+    "caption": "Reformer: Leverages locality-sensitive hashing and reversible layers to reduce memory and time complexity.\nSource: ICLR 2020"
+  },
+  {
+    "page_label": "422",
+    "caption": "Extended comparison of Transformer efficiency methods: Table comparing time, memory, and performance trade-offs."
+  },
+  {
+    "page_label": "423",
+    "caption": "Diffusion model variations: Introduces denoising score matching, latent diffusion, and consistency models."
+  },
+  {
+    "page_label": "424",
+    "caption": "Score-based Generative Models: Model the gradient of data density using noise-conditioned score functions.\nSource: NeurIPS 2019"
+  },
+  {
+    "page_label": "425",
+    "caption": "Latent Diffusion Models: Operate in compressed latent space for faster training and inference with high-resolution outputs.\nSource: CVPR 2022"
+  },
+  {
+    "page_label": "426",
+    "caption": "Consistency Models: Avoid reverse sampling by learning direct mappings from noise to data using consistency training.\nSource: ICML 2023"
+  },
+  {
+    "page_label": "427",
+    "caption": "Overview of visual encoders: ViT, ConvNeXt, Swin Transformer, and ResNet used in MLLM backbones."
+  },
+  {
+    "page_label": "428",
+    "caption": "ViT (Vision Transformer): Processes image patches as sequences. Enables scalability but lacks inductive biases.\nSource: ICLR 2021"
+  },
+  {
+    "page_label": "429",
+    "caption": "Swin Transformer: Hierarchical Transformer with shifted windows. Balances performance and efficiency.\nSource: ICCV 2021"
+  },
+  {
+    "page_label": "430",
+    "caption": "ConvNeXt: Modernized convolutional network that matches Transformer-level performance on vision tasks.\nSource: CVPR 2022"
+  },
+  {
+    "page_label": "431",
+    "caption": "Text encoder options: BERT, RoBERTa, GPT-style decoders, and T5 used in multimodal alignment tasks."
+  },
+  {
+    "page_label": "432",
+    "caption": "BERT vs. GPT: BERT is bidirectional and masked-language-trained; GPT is unidirectional and autoregressive."
+  },
+  {
+    "page_label": "433",
+    "caption": "T5: Text-to-text transformer that frames all tasks as text generation, enabling unified modeling.\nSource: JMLR 2020"
+  },
+  {
+    "page_label": "434",
+    "caption": "Multimodal fusion techniques: Concatenation, cross-attention, gated fusion, and co-attention mechanisms reviewed."
+  },
+  {
+    "page_label": "435",
+    "caption": "Cross-attention mechanism: Key to aligning different modalities (e.g., vision and language) by using one stream to query another."
+  },
+  {
+    "page_label": "436",
+    "caption": "Gated fusion: Uses learnable gates to dynamically weight different modality contributions for flexible integration."
+  },
+  {
+    "page_label": "437",
+    "caption": "Training objectives for MLLMs: Includes contrastive loss, image-text matching, masked language modeling, and ITM+MLM hybrid."
+  },
+  {
+    "page_label": "438",
+    "caption": "Contrastive Learning: Pulls matched image-text pairs together in embedding space and pushes mismatched pairs apart."
+  },
+  {
+    "page_label": "439",
+    "caption": "Masked Language Modeling (MLM): Predicts masked tokens given the rest of the sequence. Adapted to multimodal inputs in some MLLMs."
+  },
+  {
+    "page_label": "440",
+    "caption": "Image-Text Matching (ITM): Binary classification task where the model predicts whether the image and text match."
+  },
+  {
+    "page_label": "441",
+    "caption": "Hybrid objectives: Models like CLIP-ViL and UNITER use multiple objectives to improve robustness and generalization."
+  },
+  {
+    "page_label": "442",
+    "caption": "Visual grounding evaluation: Models are tested on how well text refers to regions or objects in the image (e.g., RefCOCO, Flickr30k Entities)."
+  },
+  {
+    "page_label": "443",
+    "caption": "Datasets recap: COCO, LAION, Visual Genome, Conceptual Captions, and others form the backbone of MLLM pretraining."
+  },
+  {
+    "page_label": "444",
+    "caption": "Evaluation metrics: BLEU, ROUGE, METEOR, CIDEr for captioning; accuracy and recall@k for retrieval; VQA score for QA."
+  },
+  {
+    "page_label": "445",
+    "caption": "Recent breakthroughs: GPT-4V, Gemini, Claude-3-Opus offer strong multimodal reasoning, tool use, and generation capabilities."
+  },
+  {
+    "page_label": "446",
+    "caption": "CLIP-style pretraining is foundational for aligning vision and language. Provides strong initialization for MLLMs."
+  },
+  {
+    "page_label": "447",
+    "caption": "Instruction tuning with multimodal input: MLLMs are fine-tuned using image-question-answer triples for task adaptation."
+  },
+  {
+    "page_label": "448",
+    "caption": "RLHF for MLLMs: Rewards consistency, grounding, and answer helpfulness in multimodal QA settings."
+  },
+  {
+    "page_label": "449",
+    "caption": "Reflection mechanisms in vision agents: Integrates memory, feedback, and structured plans for continual learning."
+  },
+  {
+    "page_label": "450",
+    "caption": "Emerging trends: Integrating world models, spatial simulation, tool chaining, and long-term memory into MLLMs."
+  },
+  {
+    "page_label": "451",
+    "caption": "Unified agent vision: MLLMs as foundation with planners, retrievers, executors, and verifiers layered on top."
+  },
+  {
+    "page_label": "452",
+    "caption": "Safety and alignment concerns: Hallucinations, bias, manipulation, and misuse risks discussed in multimodal contexts."
+  },
+  {
+    "page_label": "453",
+    "caption": "Alignment strategies: Constitutional AI, DPO, reflexive tuning, human evaluation pipelines for responsible MLLM deployment."
+  },
+  {
+    "page_label": "454",
+    "caption": "Future directions: Real-world deployment in healthcare, autonomous agents, education, and design creativity."
+  },
+  {
+    "page_label": "455",
+    "caption": "Course review summary: Generative models, diffusion, transformers, alignment, reasoning, and AI agents covered over 450 slides."
+  },
+  {
+    "page_label": "456",
+    "caption": "Final motivational slide: 'Build. Reflect. Improve.' Emphasizes iterative development, feedback, and curiosity."
+  },
+  {
+    "page_label": "457",
+    "caption": "Student project examples: AI tutors, multimodal interfaces, interactive agents, and autonomous workflow tools built in the course."
+  },
+  {
+    "page_label": "458",
+    "caption": "Course feedback and reflections: Students highlight favorite topics, biggest challenges, and future ambitions post-course."
+  },
+  {
+    "page_label": "459",
+    "caption": "Call to action: Encourages students to publish, collaborate, and contribute to the evolving field of intelligent systems."
+  },
+  {
+    "page_label": "460",
+    "caption": "Final acknowledgments: Thanks to teaching team, guest speakers, collaborators, and research labs that supported the course."
+  },
+  {
+    "page_label": "461",
+    "caption": "QR code for feedback form and final project submission link. Wraps up administrative details of the course."
+  },
+  {
+    "page_label": "462",
+    "caption": "AI Weekly closing banner – echoing the opening slide, signaling the end of the comprehensive lecture journey."
+  },
+  {
+    "page_label": "463",
+    "caption": "Final slide: 'Stay Inspired. Stay Creative.' with a stylized AI graphic. End of slide deck."
+  }
+]
