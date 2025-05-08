@@ -20,3 +20,8 @@
 - #### Task 1: Retrieval-Augmented Generation (RAG) Implementation
 
 - #### Task 2: RAG-based Page Retrieval
+
+### HW3: Multi-Agent Restaurant Rater
+- #### Task: Analyzing restaurant reviews using large language models. And coordinating agent roles in a multi-agent AutoGen system.
+
+### Final Project: 
