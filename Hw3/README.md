@@ -1,5 +1,6 @@
 # HW3: Multi-Agent Restaurant Rater
-
+- Background Information: AutoGen is an AI framework that enables multiple assistants to write, compile, run code, and integrate APIs automatically by using provided documentation.
+- Recommended Approach
 ---
 ## Requirements
 - pyautogen==0.9.0
@@ -9,8 +10,8 @@
 
 ---
 ## Usage
-- **To run Task 1, use the following command:** <br>
-    python3 tset.py ./requirements.txt
+- **To run Task, use the following command:** <br>
+    python3 test.py ./restaurant-data.txt
 
 ---
 ## Submission
