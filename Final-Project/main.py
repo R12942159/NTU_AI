@@ -1,6 +1,8 @@
 import os
 import json
 import pickle
+import pandas as pd
+from tqdm import tqdm
 from typing import List, Dict
 from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -13,9 +15,14 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 from huggingface_hub import login
 
+import warnings
+warnings.filterwarnings("ignore", message="`do_sample` is set to `False`.*temperature")
+warnings.filterwarnings("ignore", message="`do_sample` is set to `False`.*top_p")
 
 
-# LLM_MODEL = "microsoft/phi-2"
+
+
+
 LLM_MODEL = "meta-llama/Meta-Llama-3-8B-Instruct"
 EMB_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 cache_dir = os.path.expanduser("~/data_18TB/")
@@ -60,6 +67,8 @@ def get_llm(llm_model: str) -> HuggingFacePipeline:
         pad_token_id=tokenizer.eos_token_id,
         max_new_tokens=256,
         do_sample=False,
+        # temperature=0.6,
+        # top_p=0.90,
     )
     return HuggingFacePipeline(pipeline=gen_pipe)
 
@@ -151,7 +160,7 @@ def RAG(query: str):
 
     answer_text = rag_response["answer"]
     print("\n=== RAG 回應 ===")
-    print(answer_text)
+    # print(answer_text)
 
     prob = 0.0
     for line in answer_text.splitlines():
@@ -164,10 +173,21 @@ def RAG(query: str):
 
     return 1 if prob > THRESHOLD else 0
 
+# ========== Step 3: batch read ==========
+def batch_rag(csv_path: str, output_path: str):
+    df = pd.read_csv(csv_path)
+    
+    results = []
+    for idx, row in tqdm(df.iterrows(), total=len(df)):
+        query = row["Question"]
+        flag = RAG(query)  # 呼叫你的 RAG 模型
+        results.append(flag)
+        print(f"\n合法(0) / 違法(1) 判定結果: {flag}")
+    
+    df["Legal_Flag"] = results  # 0 合法, 1 違法
+    df.to_csv(output_path, index=False, encoding="utf-8-sig")
+    print(f"批次結果已存到 {output_path}")
+
 
 if __name__ == "__main__":
-    QUERY = (
-        "【消化酵素是什麼？】 消化酵素是可將食物由大分子分解為小分子，幫助消化，維持消化道機能。 美國n.zimes®高活性綜合消化酵素 世界一流酵素大廠 n.zimes® ► 幫助消化效率大幅提升 ✦ 多元真菌發酵酵素 ► 比一般蔬果酵素效果更好 ✦ 綜合19種超級酵素配方 ► 活性酵素種類多 ✦ 荷蘭 TNO 實驗研究 ►實驗證實大幅提升消化效率 ✦ 保證絕不添加傷身瀉藥成分(番瀉葉、番瀉苷) ✦ 給你大自然的真實，無添加任何化學賦形劑、果汁粉、甜味劑 丹麥Gastro-AD®保衛樂 德式乳桿菌大豆發酵物 ✦ 世界大廠Gastro-AD® ► 緩解飲食後困擾 ✦ 不含西藥、制酸劑 ► 成分天然無副作用 ✦ 具GMP KOSHER HALA安全認證 【消化禮物 商品資訊】 產品名稱：[消化禮物]保衛高活性19種消化酵素 成分：大豆發酵物(非基改大豆、德氏乳桿菌質)、綜合消化酵素(麥芽糊精、澱粉分解酵素、植酸酵素、葡萄糖澱粉酵素RO、複合酵素(含脂肪分解酵素、蛋白質分解酵素、澱粉分解酵素、麥芽糊精)、中性蛋白質分解酵素、鳳梨酵素、蛋白質分解酵素4.5、轉化酵素、蛋白質分解酵素3.0、半纖維素分解酵素、果膠酵素、α-半乳糖苷酶、蛋白質分解酵素AM、脂肪分解酵素、胜肽分解酵素、乳糖分解酵素、蛋白質分解酵素6.0、澱粉酵素、纖維素分解酵素AN)、玉米來源可溶性纖維 膠囊成分：羥丙基甲基纖維素 內容量：560毫克/顆，30顆/盒 食用方式：每日2~4顆，隨餐食用。 保存期限：二年 保存方法：請置於陰涼乾燥處，避免日光直照或高溫潮濕的環境。開封後請將乾燥劑取出並於60天內食用完畢，以保最佳效果。 產地：台灣 過敏原：本產品含大豆製品及麩質之穀物製品。 全素可食"
-    )
-    flag = RAG(QUERY)
-    print(f"\n合法(0) / 違法(1) 判定結果: {flag}")
+    batch_rag("final_project_query.csv", "final_legal_query.csv")
