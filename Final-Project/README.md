@@ -6,6 +6,7 @@
 - python==3.13.2
 - pandas==2.2.3
 - tqdm==4.67.1
+- bitsandbytes==0.45.5
 - langchain==0.3.23
 - langchain-huggingface== 0.2.0
 - langchain-chroma==0.2.4

@@ -1,10 +1,13 @@
+import re
 import os
 import json
 import pickle
-import pandas as pd
+import csv
 from tqdm import tqdm
 from typing import List, Dict
+from functools import lru_cache
 from langchain.schema import Document
+from transformers import BitsAndBytesConfig
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
@@ -19,9 +22,7 @@ import warnings
 warnings.filterwarnings("ignore", message="`do_sample` is set to `False`.*temperature")
 warnings.filterwarnings("ignore", message="`do_sample` is set to `False`.*top_p")
 
-
-
-
+# Login to Hugging Face Hub
 
 LLM_MODEL = "meta-llama/Meta-Llama-3-8B-Instruct"
 EMB_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
@@ -29,8 +30,10 @@ cache_dir = os.path.expanduser("~/data_18TB/")
 
 DB_PATH = "./chroma_db"
 KNOWLEDGEBASE_PATH = "Knowledge-Base.pkl" 
-THRESHOLD = 0.80 
+THRESHOLD = 0.775
 
+# === 初始化向量資料庫 ===
+@lru_cache(maxsize=1)
 def get_vectordb() -> Chroma:
     embedding = HuggingFaceEmbeddings(model_name=EMB_MODEL)
 
@@ -45,6 +48,7 @@ def get_vectordb() -> Chroma:
     return vectordb
 
 # ========== Step 1: build LLM ==========
+@lru_cache(maxsize=1)
 def get_llm(llm_model: str) -> HuggingFacePipeline:
     tokenizer = AutoTokenizer.from_pretrained(
         llm_model,
@@ -52,10 +56,14 @@ def get_llm(llm_model: str) -> HuggingFacePipeline:
         cache_dir=cache_dir,
     )
 
+    bnb_config = BitsAndBytesConfig(
+        load_in_8bit=True,
+        llm_int8_enable_fp32_cpu_offload=True,
+    )
     model = AutoModelForCausalLM.from_pretrained(
         llm_model,
         device_map="auto",
-        torch_dtype="auto",
+        quantization_config=bnb_config,
         cache_dir=cache_dir,
     )
 
@@ -79,7 +87,8 @@ def RAG(query: str):
 
     system_prompt = (
         """
-            你是一位專家，請參考以下輸出格式，根據context回答input。
+            你是一位專家，請嚴格遵守"斷行（使用 "\n" 斷行）"規則與輸出格式！！！
+            根據context回答input。
             
             目標：
                 分析廣告文字內容，根據法律條款和案例判斷廣告用詞是否涉及誇大療效及違法，並提供違法機率評估。
@@ -98,18 +107,18 @@ def RAG(query: str):
                 4. 裁罰依據：《食品安全衛生管理法》第45條（罰 4 萬至 400 萬元）
             
             回應格式：
-                若違法機率 <= 80% \n
-                違法機率: X % \n
-                違法內容分析: 經分析廣告內容，違法風險較低。 \n
-                罰款額度: 無。 \n
-                參考依據: [vector store 文件 ID] \n
+                - 若違法機率 <= 77.3% \n\n
+                    1. 違法機率: X % \n\n
+                    2. 違法內容分析: 經分析廣告內容，違法風險較低。 \n\n
+                    3. 罰款額度: 無。 \n\n
+                    4. 參考依據: [vector store 文件 ID] \n\n
 
-                若違法機率 > 80% \n
-                違法機率: X % \n
-                違法內容分析: 段落或句子: [違法描述], [裁罰原因] \n
-                違反條款: [適用法規] \n
-                罰款額度: [依據法規] \n
-                參考依據: [vector store 文件 ID] \n
+                - 若違法機率 > 77.3% \n\n                
+                    1. 違法機率: X % \n\n
+                    2. 違法內容分析: 段落或句子: [違法描述], [裁罰原因] \n\n
+                    3. 違反條款: [適用法規] \n\n
+                    4. 罰款額度: [依據法規] \n\n
+                    5. 參考依據: [vector store 文件 ID] \n\n
             
             回應結果範例:    
             {{
@@ -121,7 +130,12 @@ def RAG(query: str):
                         }},
                         {{
                             "role": "assistant",
-                            "content": "違法機率: 10%, 違法內容分析: 經分析廣告內容，違法風險較低。罰款額度: 無。參考依據: 食品及相關產品標示宣傳廣告涉及不實誇張易生誤解或醫療效能認定準則-項次3"
+                            "content": "
+                            1. 違法機率: 10.7%, \n
+                            2. 違法內容分析: 經分析廣告內容，違法風險較低。 \n
+                            3. 罰款額度: 無。 \n
+                            4. 參考依據: 食品及相關產品標示宣傳廣告涉及不實誇張易生誤解或醫療效能認定準則-項次3 \n
+                            "
                         }}
                     ]
                 }},
@@ -133,7 +147,13 @@ def RAG(query: str):
                         }},
                         {{
                             "role": "assistant",
-                            "content": "違法機率: 90%, 違法內容分析: 段落或句子: '2023營養專家推薦益生菌酵素配方 最佳替代方案胃食道逆流', 由於承諾療效過度具體且容易誤導消費者對於醫療效益的期待。 違反條款: 違反《食品安全衛生管理法》第28條第1項。 罰款額度: 第45條第1項 違反規定者罰四至四百萬。 參考依據: 無。"
+                            "content": "
+                            1. 違法機率: 93.2%, \n
+                            2. 違法內容分析: 段落或句子: '2023營養專家推薦益生菌酵素配方 最佳替代方案胃食道逆流', 由於承諾療效過度具體且容易誤導消費者對於醫療效益的期待。 \n
+                            3. 違反條款: 違反《食品安全衛生管理法》第28條第1項。 \n
+                            4. 罰款額度: 第45條第1項 違反規定者罰四至四百萬。 \n
+                            5. 參考依據: 無。 \n
+                            "
                         }}
                     ]
                 }}
@@ -159,35 +179,52 @@ def RAG(query: str):
     rag_response = rag_chain.invoke({"input": query})
 
     answer_text = rag_response["answer"]
-    print("\n=== RAG 回應 ===")
+    print("\n=============== RAG 回應 ===============")
     # print(answer_text)
 
-    prob = 0.0
-    for line in answer_text.splitlines():
+    for line in reversed(answer_text.splitlines()):
+        print(line)
+        if line.strip().startswith("違法內容分析"):
+            try:
+                print("Content in violation:", line.split(":")[1].strip())
+            except Exception:
+                pass
+        if line.strip().startswith("參考依據"):
+            try:
+                print("Violated provision:", line.split(":")[1].strip())
+            except Exception:
+                pass
         if line.strip().startswith("違法機率"):
             try:
-                prob = float(line.split(":")[1].strip().rstrip("%")) / 100.0
+                prob = float(line.split(":")[1].strip().replace('%', '').replace(',', '')) / 100.0
+                print("Violation probability", prob)
+                print("illegal or not:", prob > THRESHOLD)
             except Exception:
                 pass
             break
 
-    return 1 if prob > THRESHOLD else 0
+    return 0 if prob > THRESHOLD else 1
 
 # ========== Step 3: batch read ==========
 def batch_rag(csv_path: str, output_path: str):
-    df = pd.read_csv(csv_path)
-    
     results = []
-    for idx, row in tqdm(df.iterrows(), total=len(df)):
-        query = row["Question"]
-        flag = RAG(query)  # 呼叫你的 RAG 模型
-        results.append(flag)
-        print(f"\n合法(0) / 違法(1) 判定結果: {flag}")
-    
-    df["Legal_Flag"] = results  # 0 合法, 1 違法
-    df.to_csv(output_path, index=False, encoding="utf-8-sig")
-    print(f"批次結果已存到 {output_path}")
+
+    with open(csv_path, 'r', encoding='utf-8-sig') as file:
+        reader = csv.DictReader(file)
+
+        for idx, row in enumerate(reader):
+            query = row['Question']
+            answer = RAG(query)
+            results.append({"ID": idx, "ANSWER": answer})
+            print(f"Process the query {idx + 1} => Respond: {answer}")
+
+    with open(output_path, 'w', encoding='utf-8', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=['ID', 'ANSWER'])
+        writer.writeheader()
+        writer.writerows(results)
+    print(f"✅ Successfully exported to: {output_path}")
+
 
 
 if __name__ == "__main__":
-    batch_rag("final_project_query.csv", "final_legal_query.csv")
+    batch_rag("final_project_query.csv", "prediction.csv")
