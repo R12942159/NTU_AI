@@ -1,0 +1,16 @@
+pandas==2.2.3
+tqdm==4.67.1
+langchain
+langchain-huggingface
+langchain-chroma
+torch==2.6.0
+pypdf==5.4.0
+accelerate==0.26.0
+chromadb
+transformers==4.48.2
+sentence-transformers==2.7.0
+langchain_community
+langchain_core
+huggingface-hub
+openai
+rank_bm25
